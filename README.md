@@ -17,9 +17,15 @@ Check the reports folder for entity and logical/physical attribute definitions i
 
 ## Diagrams
 
-![V1 Conceptual](/diagrams/METADATA_MODEL_CONCEPTUAL_V1.png)  
-![V1 Logical](/diagrams/METADATA_MODEL_LOGICAL_V1.png)  
-![V1 Physical](/diagrams/METADATA_MODEL_PHYSICAL_V1.png)
+### Conceptual
+![V1 Conceptual](/diagrams/METADATA_MODEL_CONCEPTUAL_V1.PNG)
+
+### Logical
+![V1 Logical](/diagrams/METADATA_MODEL_LOGICAL_V1.PNG)
+
+### Physical
+![V1 Physical](/diagrams/METADATA_MODEL_PHYSICAL_V1.PNG)
+
 
 ## Files
 
