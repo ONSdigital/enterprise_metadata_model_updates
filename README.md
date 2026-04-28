@@ -15,6 +15,8 @@ New! Conceptual, logical and physical models for V1 complete.
 V1 with JSON released. The JSON file may contain dragons, it is not my main skillset. This will soon become a proper JSON Schema. Consider this to be the skeleton of that.
 Check the reports folder for entity and logical/physical attribute definitions in the current model.
 
+Architectural Decision Record implemented - see the documentation/decisions directory.
+
 ## Diagrams
 
 ### Conceptual
@@ -33,10 +35,10 @@ Reports and json directories contain updated (as of 24/4/2026) artifacts.
 
 ## To do
 
-- Integrate DORA/DS-DP requirements (thank you Lorraine and Hollie)
+- Integrate DS-DP requirements and metadata attributes (thank you Lorraine and Hollie)
+- Integrate DORA
 - Improve the JSON
 - Expand model to allow for table- and variable-level metadata
-- Architectural Decision Record for this project so I can remember all the reasons I do all the things I do
 - Improve the format of this repo
 
 ## Contact
