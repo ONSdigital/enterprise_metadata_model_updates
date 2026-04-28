@@ -5,7 +5,7 @@ It will be updated at least weekly (probably on Fridays) until it reaches a more
 
 ## Latest version
 
-**Updated** - Weds 24/4/26  
+**Updated** - Fri 24/4/26  
 **Version** - Version 1. Erwin model version 12 
 
 ## News
