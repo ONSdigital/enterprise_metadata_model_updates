@@ -34,8 +34,7 @@ Reports and json directories contain updated (as of 24/4/2026) artifacts.
 ## To do
 
 - Integrate DORA/DS-DP requirements (thank you Lorraine and Hollie)
-- Make the JSON more gooder
-- Consider adding a documentation class
+- Improve the JSON
 - Expand model to allow for table- and variable-level metadata
 - Architectural Decision Record for this project so I can remember all the reasons I do all the things I do
 - Improve the format of this repo
