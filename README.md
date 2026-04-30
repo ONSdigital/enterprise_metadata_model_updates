@@ -26,6 +26,8 @@ Architectural Decision Record implemented - see the documentation/decisions dire
 ![V1 Logical](/diagrams/METADATA_MODEL_LOGICAL_V1.PNG)
 
 ### Physical
+
+*(JSON architecture)*
 ![V1 Physical](/diagrams/METADATA_MODEL_PHYSICAL_V1.PNG)
 
 
