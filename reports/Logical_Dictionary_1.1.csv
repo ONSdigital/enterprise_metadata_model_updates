@@ -1,29 +1,37 @@
 Subject Area Name,ER Diagram Name,Entity Name,Attribute Name,Attribute Definition,Attribute Logical_Data_Type,Attribute Null_Option
-ONS Metadata Model,ONS Metadata Model Logical View,Role,Role Identifier,A simple alphanumeric code representing a distinct role that can be held in relation to a resource.,VARCHAR(10),Not Null
-ONS Metadata Model,Metadata Physical View,Role,Role Name,The name of the role.,VARCHAR(100),Not Null
-ONS Metadata Model,Metadata High Level View,Role,Role Description,The description of the role.,VARCHAR(100),Not Null
+ONS Metadata Model,ONS Metadata Model Logical View,Role,Role Identifier,"A unique identifier of the role.
+
+dcterms:identifier",VARCHAR(10),Not Null
+ONS Metadata Model,Metadata Physical View,Role,Role Title,"A name given to the role.
+
+dcterms:title",VARCHAR(100),Not Null
+ONS Metadata Model,Metadata High Level View,Role,Role Description,"A free-text account of the distribution.
+
+dcterms:description",VARCHAR(100),Not Null
 ONS Metadata Model,,Role,Attribution,??? Not to be used for any attributes ???,VARCHAR(-999),Not Null
 ONS Metadata Model,,Role,Role Identifier,A simple alphanumeric code representing a distinct role that can be held in relation to a resource.,VARCHAR(10),Not Null
 ONS Metadata Model,,Role,Agent Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Role,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,RelatedResource,Resource Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Related Resource,Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,RelatedResource,Related Resource Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Related Resource,Related Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,RelatedResource,RelatedResource Relationship Type Code,The nature of the relationship between the described resource and the referenced resource. Choose from a controlled vocabulary. (this vocabularly isn't established yet),VARCHAR(10),Not Null
-ONS Metadata Model,,DatasetSeries,Resource Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Related Resource,Related Resource Relationship Type,"The nature of the relationship between the described resource and the referenced resource. Choose from a controlled vocabulary. (this vocabularly isn't established yet)
+
+dcterms:type",VARCHAR(10),Not Null
+ONS Metadata Model,,Dataset Series,Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,DatasetSeries,DatasetSeries First Identifier,"The identifier of the first resource in an ordered collection or series of resources, to which the current resource belongs.
+ONS Metadata Model,,Dataset Series,Dataset Series First Identifier,"The identifier of the first resource in an ordered collection or series of resources, to which the current resource belongs.
 
 dcat:first",VARCHAR(40),Not Null
-ONS Metadata Model,,DatasetSeries,DatasetSeries Last Identifier,"The identifier of the last resource in an ordered collection or series of resources, to which the current resource belongs.
+ONS Metadata Model,,Dataset Series,Dataset Series Last Identifier,"The identifier of the last resource in an ordered collection or series of resources, to which the current resource belongs.
 
 dcat: last",VARCHAR(40),Not Null
 ONS Metadata Model,,Distribution,Distribution Identifier,A system-assigned unique identifier for the specific distribution,VARCHAR(40),Not Null
-ONS Metadata Model,,Distribution,Distribution Media Type Text,"The media type of the distribution as defined by IANA IANA-MEDIA-TYPES.
+ONS Metadata Model,,Distribution,Distribution Media Type,"The media type of the distribution as defined by IANA IANA-MEDIA-TYPES.
 
 URI: dcat:mediaType
 
@@ -36,7 +44,7 @@ Could also be a code list.
 See also : https://co-cddo.github.io/ukgov-metadata-exchange-model/mediaType/
 
 https://www.iana.org/assignments/media-types/media-types.xhtml",VARCHAR(255),Null
-ONS Metadata Model,,Distribution,Distribution Format,"A simple alphanumeric code representing the file format of the distribution. Not to be used if the type of the distribution is defined by IANA - if media type is filled out then format isn't needed.
+ONS Metadata Model,,Distribution,Distribution Format,"The file format of the distribution. Not to be used if the type of the distribution is defined by IANA - if media type is filled out then format isn't needed.
 
 This could potentially be a string.
 
@@ -60,7 +68,7 @@ URI: dcat:downloadURL
 dcat:downloadURL SHOULD be used for the URL at which this distribution is available directly, typically through a HTTP Get request.
 
 https://co-cddo.github.io/ukgov-metadata-exchange-model/downloadURL/",VARCHAR(255),Not Null
-ONS Metadata Model,,Distribution,Distribution Byte Size Amount,"The filesize of the item (file) being described.
+ONS Metadata Model,,Distribution,Distribution Byte Size,"The filesize of the item (file) being described.
 
 The size of the distribution in bytes.
 
@@ -70,10 +78,10 @@ http://co-cddo.github.io/ukgov-metadata-exchange-model/byteSize/",INTEGER,Not Nu
 ONS Metadata Model,,Distribution,Distribution Replaces Identifier,"The identifier for a related distribution that is supplanted, displaced, or superseded by the described distribution
 
 dcterms:replaces",VARCHAR(40),Null
-ONS Metadata Model,,Distribution,Distribution Version Notes Description,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS]. In the distribution's case this explains the reason for the replacement, if a replacement identifier is present.
+ONS Metadata Model,,Distribution,Distribution Version Notes,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS]. In the distribution's case this explains the reason for the replacement, if a replacement identifier is present.
 
 adms:versionNotes",VARCHAR(100),Not Null
-ONS Metadata Model,,Distribution,Distribution Language Code,"A simple alphanumeric code representing a language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
+ONS Metadata Model,,Distribution,Distribution Language,"The language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
 
 dcterms:language
 
@@ -90,7 +98,7 @@ see also : https://co-cddo.github.io/ukgov-metadata-exchange-model/issued/",DATE
 ONS Metadata Model,,Distribution,Distribution Created Date,"The date on which the content of a dataset is created or compiled.
 
 dcterms:created",DATE,Not Null
-ONS Metadata Model,,Distribution,Distribution Status Code,"A simple alphanumeric code representing the status of the resource in the context of a particular workflow process [VOCAB-ADMS].
+ONS Metadata Model,,Distribution,Distribution Status,"The status of the resource in the context of a particular workflow process [VOCAB-ADMS].
 
 I envison this as a lifecycle status code which can be used to indicate the ""currency"" of a distribution.
 
@@ -103,13 +111,15 @@ The progress codes defined in [ISO-19115] (accepted, completed, deprecated, fina
 The ADMS Status vocabulary [ADMS-SKOS], used in [DCAT-AP], which includes four statuses: completed, deprecated, under development, and withdrawn.
 The dataset statuses [EUV-DS] and concept statuses [EUV-CS] vocabularies from the EU Vocabularies registry.
 The UK Government Linked Data Registry project [UKGOVLD-REG] provides an example of how the life-cycle statuses defined in [ISO-19135] can be used in a registry, along with the criteria for status transition.",VARCHAR(10),Not Null
-ONS Metadata Model,,Distribution,Distribution Replaced By Identifier,A system-assigned unique identifier for the specific distribution,VARCHAR(40),Null
-ONS Metadata Model,,Distribution,Distribution Access Rights Code,"A simple alphanumeric code representing the rights statement that concerns how the distribution is accessed.
+ONS Metadata Model,,Distribution,Distribution Replaced By Identifier,"A unique identifier of the distribution.
+
+dcterms:identifier",VARCHAR(40),Null
+ONS Metadata Model,,Distribution,Distribution Access Rights,"The rights statement that concerns how the distribution is accessed.
 
 URI: dct:accessRights
 
 This could be a code that indicates whether the data is openly availalble, limited to internal access, or further limited to permissions groups. I will need support defining this further. - Sam",VARCHAR(10),Not Null
-ONS Metadata Model,,Distribution,Distribution Licence Code,"Reference to the legal document outlining access and usage rights for an information resource.
+ONS Metadata Model,,Distribution,Distribution Licence,"Reference to the legal document outlining access and usage rights for an information resource.
 
 A legal document under which the distribution is made available.
 
@@ -123,7 +133,7 @@ note: This could refer to a code referencing the various licenses or be a URL of
 
 so unless there's a huge variation of licences could have a list...
 ",VARCHAR(10),Not Null
-ONS Metadata Model,,Distribution,Distribution Security Classification Code,"A simple alphanumeric code representing an information security designation that identifies the minimum level of protection assigned to an information resource.
+ONS Metadata Model,,Distribution,Distribution Security Classification,"The information security designation that identifies the minimum level of protection assigned to an information resource.
 
 URI: ukgov_metadata:securityClassification
 
@@ -137,34 +147,38 @@ dcat:accessURL SHOULD be used for the URL of a service or location that can prov
 dcat:downloadURL is preferred for direct links to downloadable resources.
 
 If the distribution(s) are accessible only through a landing page (i.e., direct download URLs are not known), then the landing page URL associated with the dcat:Dataset SHOULD be duplicated as access URL on a distribution (see 5.7 Dataset available only behind some Web page).",VARCHAR(255),Null
-ONS Metadata Model,,Distribution,Resource Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Distribution,Resource Identifier,"A unique identifier of the resource being described or catalogued.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,Distribution,Distribution Access Service Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Distribution,Distribution Access Service Identifier,"A unique identifier of the data service.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,Distribution,Distribution Modified Date,"Most recent date on which the distribution was changed, updated or modified.
+ONS Metadata Model,,Distribution,Distribution Modified Date,"The recent date on which the distribution was changed, updated or modified.
 
 dcterms:modified
 
 This relates to the actual distribution not the catalogue record of the dataset",DATE,Not Null
-ONS Metadata Model,,Dataset-Dataservice Access,Dataset-Dataservice Access Identifier,A system-assigned unique identifier for this connection.,VARCHAR(40),Not Null
-ONS Metadata Model,,Dataset-Dataservice Access,Resource Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Dataset-Data Service Access,Dataset-Data Service Access Identifier,"A unique identifier of the instance of dataset-dateservice access.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,Dataset-Dataservice Access,DataService Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Dataset-Data Service Access,Dataset Identifier,"A unique identifier of the dataset being described or cataloged.
+
+dcterms:identifier",VARCHAR(40),Not Null
+ONS Metadata Model,,Dataset-Data Service Access,Data Service Identifier,"A unique identifier of the data service being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
 ONS Metadata Model,,Dataset,Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,Dataset,Dataset Frequency Code,"A simple alphanumeric code representing the frequency at which a dataset is published.
+ONS Metadata Model,,Dataset,Dataset Frequency,"The frequency at which a dataset is published. May need to consider other frequencies as well - ie collected/acquired.
 
 dcterms:accrualPeriodicity
 
 range is dcterms:Frequency",VARCHAR(10),Not Null
-ONS Metadata Model,,Dataset,Dataset Geographical Coverage Code,A simple alphanumeric code representing the spatial/geographical area covered by the dataset.,VARCHAR(10),Not Null
-ONS Metadata Model,,Dataset,Dataset Spatial Resolution Code,"A simple alphanumeric code representing the lowest level of geography covered by this dataset.
+ONS Metadata Model,,Dataset,Dataset Geographical Coverage,"The spatial/geographical area covered by the dataset.
+
+dcterms:spatial",VARCHAR(10),Not Null
+ONS Metadata Model,,Dataset,Dataset Spatial Resolution,"A simple alphanumeric code representing the lowest level of geography covered by this dataset.
 
 (in DCAT this is 
 
@@ -172,20 +186,30 @@ dcat:spatialResolutionInMeters
 Definition:	Minimum spatial separation resolvable in a dataset, measured in meters. 
 
 But I've not seen this is in use throughout ONS )",VARCHAR(10),Not Null
-ONS Metadata Model,,Dataset,Dataset Temporal Coverage Start Date,The calendar date that ...,DATE,Not Null
-ONS Metadata Model,,Dataset,Dataset Temporal Coverage End Date,The calendar date that ...,DATE,Not Null
-ONS Metadata Model,,Dataset,Dataset Previous Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Dataset,Dataset Temporal Coverage Start Date,"The calendar date of the start of this dataset's temporal coverage.
+
+dcat:startDate",DATE,Not Null
+ONS Metadata Model,,Dataset,Dataset Temporal Coverage End Date,"The calendar date of the end of this dataset's temporal coverage.
+
+dcat:endDate
+
+",DATE,Not Null
+ONS Metadata Model,,Dataset,Dataset Previous Identifier,"A unique identifier of the previous dataset in the series. Both datasets must have the same In Series Identifier.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,Dataset,Dataset Next Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Dataset,Dataset Next Identifier,"A unique identifier of the next dataset in the series. Both datasets must have the same In Series Identifier.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,Dataset,Dataset In Series Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Dataset,Dataset In Series Identifier,"A unique identifier of the dataset series to which this dataset belongs.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,Dataset,Dataset Temporal Coverage Duration Text,"The temporal period that the dataset covers.
-Encoded as per duration standard",VARCHAR(255),Not Null
-ONS Metadata Model,,Agent,Agent Identifier,A system-assigned unique identifier for the agent.,VARCHAR(40),Not Null
+ONS Metadata Model,,Dataset,Dataset Temporal Coverage Duration,"The temporal period that the dataset covers.
+Encoded as per duration standard
+
+dcat:temporalResolution is close but not quite right. DCAT and other ontologies seem to think that time and duration should belong to its own class. maybe each dataset can have more than one duration in this way. ",VARCHAR(255),Not Null
+ONS Metadata Model,,Agent,Agent Identifier,"A unique identifier of the agent.
+
+dcterms:identifier",VARCHAR(40),Not Null
 ONS Metadata Model,,Agent,Agent Name,"The name of the agent.
 
 The name of something is a simple textual string.
@@ -223,18 +247,22 @@ ONS Metadata Model,,Agent,Attribution,??? Not to be used for any attributes ???,
 ONS Metadata Model,,Agent,Role Code,A simple alphanumeric code representing ???,VARCHAR(10),Not Null
 ONS Metadata Model,,Agent,Agent Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Agent,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Attribution,Role Identifier,A simple alphanumeric code representing a distinct role that can be held in relation to a resource.,VARCHAR(10),Not Null
-ONS Metadata Model,,Attribution,Agent Identifier,A system-assigned unique identifier for the agent.,VARCHAR(40),Not Null
-ONS Metadata Model,,Attribution,Resource Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Attribution,Role Identifier,"A unique identifier of the role being being attributed. 
+
+dcterms:identifier",VARCHAR(10),Not Null
+ONS Metadata Model,,Attribution,Agent Identifier,"A unique identifier of the agent.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,DataService,Resource Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Attribution,Resource Identifier,"A unique identifier of the resource being described or catalogued.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,DataService,DataService Endpoint Description,"A description of the services available via the end-points, including their operations, parameters etc.
+ONS Metadata Model,,Data Service,Resource Identifier,"A unique identifier of the resource being described or cataloged.
+
+dcterms:identifier",VARCHAR(40),Not Null
+ONS Metadata Model,,Data Service,DataService Endpoint Description,"A description of the services available via the end-points, including their operations, parameters etc.
 
 URI: dcat:endpointDescription",VARCHAR(100),Not Null
-ONS Metadata Model,,DataService,DataService Endpoint URL,"The root location or primary endpoint of the service (a Web-resolvable IRI).
+ONS Metadata Model,,Data Service,DataService Endpoint URL,"The root location or primary endpoint of the service (a Web-resolvable IRI).
 
 dcat:endpointURL
 
@@ -245,12 +273,12 @@ See also https://co-cddo.github.io/ukgov-metadata-exchange-model/endpointURL/ wi
 
 ",VARCHAR(255),Not Null
 ONS Metadata Model,,Checksum,Distribution Identifier,A system-assigned unique identifier for the specific distribution,VARCHAR(40),Not Null
-ONS Metadata Model,,Checksum,Checksum Algorithm Code,"A simple alphanumeric code representing the algorithm used to produce the subject Checksum [SPDX].
+ONS Metadata Model,,Checksum,Checksum Algorithm,"A simple alphanumeric code representing the algorithm used to produce the subject Checksum [SPDX].
 
 spdx:algorithm
 
 Version 2.2 of [SPDX] defines individuals for the following algorithms: MD2, MD4, MD5, MD6, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 - do we have a similar list?",VARCHAR(10),Not Null
-ONS Metadata Model,,Checksum,Checksum Value,"The checksumValue property provides a lowercase hexadecimal encoded digest value produced using a specific algorithm [SPDX].
+ONS Metadata Model,,Checksum,Checksum,"The checksumValue property provides a lowercase hexadecimal encoded digest value produced using a specific algorithm [SPDX].
 
 spdx:checksumValue",NUMBER,Not Null
 ONS Metadata Model,,Resource,Resource Identifier,"A unique identifier of the resource being described or cataloged.
@@ -266,7 +294,7 @@ URI: dct:alternative",VARCHAR(100),Null
 ONS Metadata Model,,Resource,Resource Description,"A free-text account of the resource.
 
 dcterms:description",VARCHAR(100),Not Null
-ONS Metadata Model,,Resource,Resource Theme Code *,"The main category of the resource. A resource can have multiple themes.
+ONS Metadata Model,,Resource,Resource Theme,"The main category of the resource. A resource can have multiple themes.
 
 dcat:theme",VARCHAR(10),Not Null
 ONS Metadata Model,,Resource,Resource Type,"The nature or genre of the resource.
@@ -286,8 +314,8 @@ ONS Metadata Model,,Resource,Resource Modified Date,"Most recent date on which t
 
 dcterms:modified
 
-This relates to the actual dataset, not the catalogue record of the dataset",DATE,Not Null
-ONS Metadata Model,,Resource,Resource Version Text,"The version indicator (name or identifier) of a resource.
+This relates to the actual dataset, not the catalogue record of the dataset. ",DATE,Not Null
+ONS Metadata Model,,Resource,Resource Version,"The version indicator (name or identifier) of a resource.
 
 URI: dcat:version
 
@@ -299,7 +327,7 @@ The value of this field should follow the versioning scheme for the data asset. 
 ONS Metadata Model,,Resource,Resource Version Notes Description,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS].
 
 adms:versionNotes",VARCHAR(100),Null
-ONS Metadata Model,,Resource,Resource Replaces Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Resource,Resource Replaces Identifier,"A unique identifier of the resource being described or catalogued.
 
 
 http://purl.org/dc/terms/replaces
@@ -308,7 +336,7 @@ dct:replaces",VARCHAR(40),Null
 ONS Metadata Model,,Resource,ResourceLanding Page URL,"A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.
 
 dcat:landingPage",VARCHAR(255),Null
-ONS Metadata Model,,Resource,Resource Access Rights Code,"A simple alphanumeric code representing the rights statement that concerns how the resource is accessed.
+ONS Metadata Model,,Resource,Resource Access Rights,"Details of the rights statement that concerns how the resource is accessed.
 
 URI: dct:accessRights
 
@@ -344,7 +372,7 @@ dcat:hasVersion",VARCHAR(40),Null
 ONS Metadata Model,,Resource,Resource Replaced By Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Null
-ONS Metadata Model,,Resource,Resource Status Code,"A simple alphanumeric code representing the status of the resource in the context of a particular workflow process [VOCAB-ADMS].
+ONS Metadata Model,,Resource,Resource Status,"The status of the resource in the context of a particular workflow process [VOCAB-ADMS].
 
 I envison this as a lifecycle status code which can be used to indicate the ""currency"" of a distribution.
 
@@ -357,7 +385,7 @@ The progress codes defined in [ISO-19115] (accepted, completed, deprecated, fina
 The ADMS Status vocabulary [ADMS-SKOS], used in [DCAT-AP], which includes four statuses: completed, deprecated, under development, and withdrawn.
 The dataset statuses [EUV-DS] and concept statuses [EUV-CS] vocabularies from the EU Vocabularies registry.
 The UK Government Linked Data Registry project [UKGOVLD-REG] provides an example of how the life-cycle statuses defined in [ISO-19135] can be used in a registry, along with the criteria for status transition.",VARCHAR(10),Not Null
-ONS Metadata Model,,Resource,Resource Language,"A simple alphanumeric code representing a language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
+ONS Metadata Model,,Resource,Resource Language,"The language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
 
 dcterms:language
 
@@ -366,7 +394,7 @@ Usage note:	If representations of a dataset are available for each language sepa
 (datasets can have multiple languages, however each distribution will have only one)
 
 ",ARRAY,Not Null
-ONS Metadata Model,,Resource,Resource Previous Version Identifier,"A unique identifier of the resource being described or cataloged.
+ONS Metadata Model,,Resource,Resource Previous Version Identifier,"A unique identifier of the resource being described or catalogued.
 
 dcterms:identifier",VARCHAR(40),Null
 ONS Metadata Model,,Resource,Resource Brief Description,"A free-text account of the resource.
@@ -396,7 +424,7 @@ Keywords can serve as additional access points to assist discovery and retrieval
 ONS Metadata Model,,Resource,Resource Current Version Identifier,"This resource has a more specific, versioned resource with equivalent content [PAV]. The identifier of that resource.
 
 dcat:hasCurrentVersion",VARCHAR(40),Null
-ONS Metadata Model,,Resource,Resource Security Classification,"A simple alphanumeric code representing an information security designation that identifies the minimum level of protection assigned to an information resource.
+ONS Metadata Model,,Resource,Resource Security Classification,"An information security designation that identifies the minimum level of protection assigned to an information resource.
 
 URI: ukgov_metadata:securityClassification
 
@@ -405,11 +433,11 @@ ONS Metadata Model,,Resource,Resource ContactPoint Name,"Relevant contact inform
 
 dcat:contactPoint
 
-In the longer term this could be done better through the agent/role/attribution setup (which will be needed for additional roles such as IAO, data steward, etc)  but for now - ""Who, in the ONS, is the person you talk to about this resource?"" This should just be a name.",VARCHAR(100),Not Null
-ONS Metadata Model,,Resource,RelatedResource,??? Not to be used for any attributes ???,VARCHAR(-999),Not Null
+In the longer term this could be done better through the agent/role/attribution setup (which will be needed for additional roles such as IAO, data steward, etc)  but for now - 'Who, in the ONS, is the person you talk to about this resource?' This should just be a name.",VARCHAR(100),Not Null
+ONS Metadata Model,,Resource,Related Resource,??? Not to be used for any attributes ???,VARCHAR(-999),Not Null
 ONS Metadata Model,,Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Related Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,RelatedResource Relationship Type,The nature of the relationship between the described resource and the referenced resource. Choose from a controlled vocabulary. (this vocabularly isn't established yet),VARCHAR(10),Not Null
+ONS Metadata Model,,Resource,Related Resource Relationship Type,The nature of the relationship between the described resource and the referenced resource. Choose from a controlled vocabulary. (this vocabularly isn't established yet),VARCHAR(10),Not Null
 ONS Metadata Model,,Resource,Dataset,??? Not to be used for any attributes ???,Object,Not Null
 ONS Metadata Model,,Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Dataset Geographical Coverage,A simple alphanumeric code representing the spatial/geographical area covered by the dataset.,VARCHAR(10),Not Null
@@ -435,7 +463,7 @@ ONS Metadata Model,,Resource,Dataset Next Identifier,A system-assigned unique id
 ONS Metadata Model,,Resource,Dataset In Series Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Distribution,??? Not to be used for any attributes ???,VARCHAR(-999),Not Null
 ONS Metadata Model,,Resource,Distribution Identifier,A system-assigned unique identifier for the specific distribution,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,Distribution Media Type Text,"The media type of the distribution as defined by IANA IANA-MEDIA-TYPES.
+ONS Metadata Model,,Resource,Distribution Media Type,"The media type of the distribution as defined by IANA IANA-MEDIA-TYPES.
 
 URI: dcat:mediaType
 
@@ -472,7 +500,7 @@ URI: dcat:downloadURL
 dcat:downloadURL SHOULD be used for the URL at which this distribution is available directly, typically through a HTTP Get request.
 
 https://co-cddo.github.io/ukgov-metadata-exchange-model/downloadURL/",VARCHAR(255),Not Null
-ONS Metadata Model,,Resource,Distribution Byte Size Amount,"The filesize of the item (file) being described.
+ONS Metadata Model,,Resource,Distribution Byte Size,"The filesize of the item (file) being described.
 
 The size of the distribution in bytes.
 
@@ -482,10 +510,10 @@ http://co-cddo.github.io/ukgov-metadata-exchange-model/byteSize/",INTEGER,Not Nu
 ONS Metadata Model,,Resource,Distribution Replaces Identifier,"The identifier for a related distribution that is supplanted, displaced, or superseded by the described distribution
 
 dcterms:replaces",VARCHAR(40),Null
-ONS Metadata Model,,Resource,Distribution Version Notes Description,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS]. In the distribution's case this explains the reason for the replacement, if a replacement identifier is present.
+ONS Metadata Model,,Resource,Distribution Version Notes,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS]. In the distribution's case this explains the reason for the replacement, if a replacement identifier is present.
 
 adms:versionNotes",VARCHAR(100),Not Null
-ONS Metadata Model,,Resource,Distribution Language Code,"A simple alphanumeric code representing a language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
+ONS Metadata Model,,Resource,Distribution Language,"A simple alphanumeric code representing a language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
 
 dcterms:language
 
@@ -502,7 +530,7 @@ see also : https://co-cddo.github.io/ukgov-metadata-exchange-model/issued/",DATE
 ONS Metadata Model,,Resource,Distribution Created Date,"The date on which the content of a dataset is created or compiled.
 
 dcterms:created",DATE,Not Null
-ONS Metadata Model,,Resource,Distribution Status Code,"A simple alphanumeric code representing the status of the resource in the context of a particular workflow process [VOCAB-ADMS].
+ONS Metadata Model,,Resource,Distribution Status,"A simple alphanumeric code representing the status of the resource in the context of a particular workflow process [VOCAB-ADMS].
 
 I envison this as a lifecycle status code which can be used to indicate the ""currency"" of a distribution.
 
@@ -516,12 +544,12 @@ The ADMS Status vocabulary [ADMS-SKOS], used in [DCAT-AP], which includes four s
 The dataset statuses [EUV-DS] and concept statuses [EUV-CS] vocabularies from the EU Vocabularies registry.
 The UK Government Linked Data Registry project [UKGOVLD-REG] provides an example of how the life-cycle statuses defined in [ISO-19135] can be used in a registry, along with the criteria for status transition.",VARCHAR(10),Not Null
 ONS Metadata Model,,Resource,Distribution Replaced By Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Null
-ONS Metadata Model,,Resource,Distribution Access Rights Code,"A simple alphanumeric code representing the rights statement that concerns how the distribution is accessed.
+ONS Metadata Model,,Resource,Distribution Access Rights,"A simple alphanumeric code representing the rights statement that concerns how the distribution is accessed.
 
 URI: dct:accessRights
 
 This could be a code that indicates whether the data is openly availalble, limited to internal access, or further limited to permissions groups. I will need support defining this further. - Sam",VARCHAR(10),Not Null
-ONS Metadata Model,,Resource,Distribution Licence Code,"Reference to the legal document outlining access and usage rights for an information resource.
+ONS Metadata Model,,Resource,Distribution Licence,"Reference to the legal document outlining access and usage rights for an information resource.
 
 A legal document under which the distribution is made available.
 
@@ -535,7 +563,7 @@ note: This could refer to a code referencing the various licenses or be a URL of
 
 so unless there's a huge variation of licences could have a list...
 ",VARCHAR(10),Not Null
-ONS Metadata Model,,Resource,Distribution Security Classification Code,"A simple alphanumeric code representing an information security designation that identifies the minimum level of protection assigned to an information resource.
+ONS Metadata Model,,Resource,Distribution Security Classification,"A simple alphanumeric code representing an information security designation that identifies the minimum level of protection assigned to an information resource.
 
 URI: ukgov_metadata:securityClassification
 
@@ -558,25 +586,25 @@ dcterms:modified
 This relates to the actual distribution not the catalogue record of the dataset",DATE,Not Null
 ONS Metadata Model,,Resource,Checksum,??? Not to be used for any attributes ???,Object,Not Null
 ONS Metadata Model,,Resource,Distribution Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,Checksum Algorithm Code,"A simple alphanumeric code representing the algorithm used to produce the subject Checksum [SPDX].
+ONS Metadata Model,,Resource,Checksum Algorithm,"A simple alphanumeric code representing the algorithm used to produce the subject Checksum [SPDX].
 
 spdx:algorithm
 
 Version 2.2 of [SPDX] defines individuals for the following algorithms: MD2, MD4, MD5, MD6, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 - do we have a similar list?",VARCHAR(10),Not Null
-ONS Metadata Model,,Resource,Checksum Value,"The checksumValue property provides a lowercase hexadecimal encoded digest value produced using a specific algorithm [SPDX].
+ONS Metadata Model,,Resource,Checksum,"The checksumValue property provides a lowercase hexadecimal encoded digest value produced using a specific algorithm [SPDX].
 
 spdx:checksumValue",NUMBER,Not Null
-ONS Metadata Model,,Resource,DatasetSeries,??? Not to be used for any attributes ???,Object,Not Null
+ONS Metadata Model,,Resource,Dataset Series,??? Not to be used for any attributes ???,Object,Not Null
 ONS Metadata Model,,Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,DatasetSeries First Identifier,"The identifier of the first resource in an ordered collection or series of resources, to which the current resource belongs.
+ONS Metadata Model,,Resource,Dataset Series First Identifier,"The identifier of the first resource in an ordered collection or series of resources, to which the current resource belongs.
 
 dcat:first",VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,DatasetSeries Last Identifier,"The identifier of the last resource in an ordered collection or series of resources, to which the current resource belongs.
+ONS Metadata Model,,Resource,Dataset Series Last Identifier,"The identifier of the last resource in an ordered collection or series of resources, to which the current resource belongs.
 
 dcat: last",VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Dataset,??? Not to be used for any attributes ???,VARCHAR(-999),Not Null
 ONS Metadata Model,,Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,Dataset Geographical Coverage Code,A simple alphanumeric code representing the spatial/geographical area covered by the dataset.,VARCHAR(10),Not Null
+ONS Metadata Model,,Resource,Dataset Geographical Coverage,A simple alphanumeric code representing the spatial/geographical area covered by the dataset.,VARCHAR(10),Not Null
 ONS Metadata Model,,Resource,Dataset Temporal Coverage Duration,"The temporal period that the dataset covers.
 Encoded as per duration standard",VARCHAR(255),Not Null
 ONS Metadata Model,,Resource,Dataset Spatial Resolution,"A simple alphanumeric code representing the lowest level of geography covered by this dataset.
@@ -597,7 +625,7 @@ range is dcterms:Frequency",VARCHAR(10),Not Null
 ONS Metadata Model,,Resource,Dataset Previous Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Dataset Next Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Dataset In Series Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,DataService,??? Not to be used for any attributes ???,Object,Not Null
+ONS Metadata Model,,Resource,Data Service,??? Not to be used for any attributes ???,Object,Not Null
 ONS Metadata Model,,Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,DataService Endpoint Description,"A description of the services available via the end-points, including their operations, parameters etc.
 
@@ -651,7 +679,7 @@ URI: dcat:downloadURL
 dcat:downloadURL SHOULD be used for the URL at which this distribution is available directly, typically through a HTTP Get request.
 
 https://co-cddo.github.io/ukgov-metadata-exchange-model/downloadURL/",VARCHAR(255),Not Null
-ONS Metadata Model,,Resource,Distribution Byte Size Amount,"The filesize of the item (file) being described.
+ONS Metadata Model,,Resource,Distribution Byte Size,"The filesize of the item (file) being described.
 
 The size of the distribution in bytes.
 
@@ -661,7 +689,7 @@ http://co-cddo.github.io/ukgov-metadata-exchange-model/byteSize/",INTEGER,Not Nu
 ONS Metadata Model,,Resource,Distribution Replaces Identifier,"The identifier for a related distribution that is supplanted, displaced, or superseded by the described distribution
 
 dcterms:replaces",VARCHAR(40),Null
-ONS Metadata Model,,Resource,Distribution Version Notes Description,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS]. In the distribution's case this explains the reason for the replacement, if a replacement identifier is present.
+ONS Metadata Model,,Resource,Distribution Version Notes,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS]. In the distribution's case this explains the reason for the replacement, if a replacement identifier is present.
 
 adms:versionNotes",VARCHAR(100),Not Null
 ONS Metadata Model,,Resource,Distribution Language,"A simple alphanumeric code representing a language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
@@ -700,7 +728,7 @@ ONS Metadata Model,,Resource,Distribution Access Rights,"A simple alphanumeric c
 URI: dct:accessRights
 
 This could be a code that indicates whether the data is openly availalble, limited to internal access, or further limited to permissions groups. I will need support defining this further. - Sam",VARCHAR(10),Not Null
-ONS Metadata Model,,Resource,Distribution License,"Reference to the legal document outlining access and usage rights for an information resource.
+ONS Metadata Model,,Resource,Distribution Licence,"Reference to the legal document outlining access and usage rights for an information resource.
 
 A legal document under which the distribution is made available.
 
@@ -714,7 +742,7 @@ note: This could refer to a code referencing the various licenses or be a URL of
 
 so unless there's a huge variation of licences could have a list...
 ",VARCHAR(10),Not Null
-ONS Metadata Model,,Resource,Distribution Security Classification Code,"A simple alphanumeric code representing an information security designation that identifies the minimum level of protection assigned to an information resource.
+ONS Metadata Model,,Resource,Distribution Security Classification,"A simple alphanumeric code representing an information security designation that identifies the minimum level of protection assigned to an information resource.
 
 URI: ukgov_metadata:securityClassification
 
@@ -737,26 +765,63 @@ dcterms:modified
 This relates to the actual distribution not the catalogue record of the dataset",DATE,Not Null
 ONS Metadata Model,,Resource,Checksum,??? Not to be used for any attributes ???,Object,Not Null
 ONS Metadata Model,,Resource,Distribution Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,Checksum Algorithm Code,"A simple alphanumeric code representing the algorithm used to produce the subject Checksum [SPDX].
+ONS Metadata Model,,Resource,Checksum Algorithm,"A simple alphanumeric code representing the algorithm used to produce the subject Checksum [SPDX].
 
 spdx:algorithm
 
 Version 2.2 of [SPDX] defines individuals for the following algorithms: MD2, MD4, MD5, MD6, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 - do we have a similar list?",VARCHAR(10),Not Null
-ONS Metadata Model,,Resource,Checksum Value,"The checksumValue property provides a lowercase hexadecimal encoded digest value produced using a specific algorithm [SPDX].
+ONS Metadata Model,,Resource,Checksum,"The checksumValue property provides a lowercase hexadecimal encoded digest value produced using a specific algorithm [SPDX].
 
 spdx:checksumValue",NUMBER,Not Null
-ONS Metadata Model,,Resource,Dataset-Dataservice Access,??? Not to be used for any attributes ???,VARCHAR(-999),Not Null
+ONS Metadata Model,,Resource,Dataset-Data Service Access,??? Not to be used for any attributes ???,VARCHAR(-999),Not Null
 ONS Metadata Model,,Resource,Dataset-Dataservice Access Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,DataService Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,Dataset-Dataservice Access,??? Not to be used for any attributes ???,VARCHAR(-999),Not Null
+ONS Metadata Model,,Resource,Dataset Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
+ONS Metadata Model,,Resource,Data Service Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
+ONS Metadata Model,,Resource,Dataset-Data Service Access,??? Not to be used for any attributes ???,VARCHAR(-999),Not Null
 ONS Metadata Model,,Resource,Dataset-Dataservice Access Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-ONS Metadata Model,,Resource,DataService Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
+ONS Metadata Model,,Resource,Dataset Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
+ONS Metadata Model,,Resource,Data Service Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Attribution,??? Not to be used for any attributes ???,VARCHAR(-999),Not Null
 ONS Metadata Model,,Resource,Role,A simple alphanumeric code representing ???,VARCHAR(10),Not Null
 ONS Metadata Model,,Resource,Agent Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
+ONS Metadata Model,,Catalogue Record,Catalogue Record Identifier,"A unique identifier of the resource being described or cataloged.
+
+dcterms:identifier",VARCHAR(40),Not Null
+ONS Metadata Model,,Catalogue Record,Catalogue Record Primary Topic Identifier,"A unique identifier of the resource being described or cataloged.
+
+dcterms:identifier",VARCHAR(40),Not Null
+ONS Metadata Model,,Catalogue Record,Catalogue Record Listed Timestamp,The date and time for ???,TIMESTAMP,Not Null
+ONS Metadata Model,,Catalogue Record,Catalogue Record Modified Timestamp,"Most recent date on which the catalog entry was changed, updated or modified.
+
+dcterms:modified",TIMESTAMP,Not Null
+ONS Metadata Model,,Catalogue Record,Catalogue Record Description,"A free-text account of the record.
+
+dcterms:description",VARCHAR(100),Not Null
+ONS Metadata Model,,Catalogue Record,Catalogue Record Title,"A name given to the record.
+
+dcterms:title",VARCHAR(100),Not Null
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
 ,,,,,,
 ,,,,,,
 ,,,,,,
