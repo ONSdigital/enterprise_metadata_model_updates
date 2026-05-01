@@ -4,6 +4,8 @@ This is a repository for people to access artifacts around the EMM enterprise **
 This will include reports, documentation, instance diagrams and any other thing useful for understanding the model.
 It will be updated at least weekly (probably on Fridays) until it reaches a more settled state.
 
+Please watch this repo for updates or come back next Friday :)
+
 ## Introduction
 
 The ONS metadata model describes an enterprise data catalogue which is based on international standards and identified requirements from business areas that will be interacting with it. To deliver this as quickly as possible it is being built in a top-down and bottom-up way at the same time. The model as it exists now is mostly the top-down, which describes a compliant data catalogue that would work for most general purposes. The bottom-up part involves incorporating different business areas and developing new classes and properties that they need, outputting the model in the format they need for their purposes - ie JSON for an API, or a logical domain profile for a dashboard developer.
