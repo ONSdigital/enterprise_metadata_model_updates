@@ -18,42 +18,45 @@ When it is complete it will consist of :
 
 ## Latest version
 
-**Updated** - Fri 1/5/26  
-**Version** - Version 1.1 . Erwin model version 15 
+**Updated** - Fri 8/5/26  
+**Version** - Version 1.2 . Erwin model version 21 
 
 ## News
 
-Architectural Decision Record has been implemented - all major changes to this model and the reasons for those changes can be found in [documentation/decisions](/documentation/decisions).
+New classes to support DORA/DS-DP requirements have been added to the model (specifically Literal, Variable and Frequency classes). See the [Entity Definitions report](/reports/Entity_Definitions_1.2.csv) for more details.
 
-Check the reports folder for entity and logical/physical attribute definitions in the current model.
+A legend has been added to the Logical Diagram.
 
-The biggest changes this update are changes to attribute names to remove references to "codes" (as this was confusing) and the addition of the Catalogue Resource class to track when entries in the catalogue are created or changed, as opposed to the actual datasets themselves.
+**Architectural Decision Record** is updated. As of 8/5 the current decisions are outstanding (mostly I've already put them in the model but it would be good to review those changes). Have a look in the [documentation/decisions](documentation/decisions) directory for more information.
+
+New decisions are decisions 4-7. The proposed decisions are:
+
+- ***5**: [Add Resource Next Version ID to Resource class](documentation/decisions/0005-add-resource-next-version-id-to-resource-class.md)*
+- ***6**: [Add Literal class to handled Alerts](documentation/decisions/0006-add-literal-class-to-handle-alerts.md)*
 
 
 ## Diagrams
 
 ### Conceptual
-![V1.1 Conceptual](/diagrams/METADATA_MODEL_CONCEPTUAL_V1.1.PNG)
+![V1.2 Conceptual](/diagrams/METADATA_MODEL_CONCEPTUAL_V1.2.PNG)
 
 ### Logical
-![V1.1 Logical](/diagrams/METADATA_MODEL_LOGICAL_V1.1.PNG)
+![V1.2 Logical](/diagrams/METADATA_MODEL_LOGICAL_V1.2.PNG)
 
 ### Physical
 
 *(JSON architecture)*
-![V1.1 Physical](/diagrams/METADATA_MODEL_PHYSICAL_V1.1.PNG)
+![V1.2 Physical](/diagrams/METADATA_MODEL_PHYSICAL_V1.2.PNG)
 
 
 ## Files
 
-Reports and json directories are updated for version 1.1.
+Reports and json directories are updated for version 1.2.
 
 ## To do
 
-- Integrate DS-DP requirements and metadata attributes (thank you Lorraine and Hollie)
-- Integrate DORA and expand the model to incorporate table- and variable-level metadata.
-- Create a DS-DP domain profile and instance models.
-- Improve the JSON
+- Dissemination domain profile and JSON for DS-DP.
+- DORA profile and JSON
 - Improve the format of this repo
 
 ## Contact
