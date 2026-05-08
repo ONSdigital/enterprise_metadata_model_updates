@@ -4,7 +4,7 @@ Date: 05/05/2026 17:33
 
 ## Status
 
-PROPOSED
+ACCEPTED
 
 ## Context
 
