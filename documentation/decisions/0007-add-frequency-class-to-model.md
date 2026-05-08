@@ -14,7 +14,7 @@ DCAT-AP offers a supporting class to deal with this situation called "Frequency"
 
 ## Decision
 
-To create the Frequency class as a child of Dataset.
+To create the Frequency class as a child of Dataset. Contributors : Lorraine Crichton, Wilfred Inuaghata, Sam Iacob
 
 ## Consequences
 
