@@ -66,3 +66,28 @@ When describing a resource which is not a dcat:Dataset or dcat:DataService, it i
 Catalogue Record,"A record in a catalog, describing the registration of a single dcat:Resource.
 
 dcat:CatalogRecord",,
+Variable,"DDICDIModels::DDICDILibrary::Classes::Conceptual::RepresentedVariable
+
+Conceptual variable with a substantive value domain specified.
+
+Example: The pair (Number of Employees, Integer), where “Number of Employees” is the characteristic of the population (variable) and “Integer” is how that measure will be represented (value domain).
+
+NOTE: This is NOT actually compliant with either DCAT or DDI-CDI and is included as a tactical measure. The Represented Variable is a DDI-CDI class but is significantly more complicated than explained here (to work as intended it needs to be connected to various other classes not represented here)",,
+Literal,"A literal value such as a string or integer; Literals may be typed, e.g. as a date according to xsd:date. Literals that contain human-readable text have an optional language tag as defined by BCP 47 [rfc5646].
+
+DCAT-AP:literal
+
+https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Literal
+
+rdfs:Literal a rdfs:Class ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	rdfs:label ""Literal"" ;
+	rdfs:comment ""The class of literal values, eg. textual strings and integers."" ;
+	rdfs:subClassOf rdfs:Resource .",,
+Frequency,"A rate at which something recurs, e.g. the publication of a Dataset.
+
+https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Frequency
+
+dcat-ap:frequency
+
+This has been included as datasets have multiple frequencies at different levels that need to be captured. For instance, publication, delivery, ingest etc. ",,

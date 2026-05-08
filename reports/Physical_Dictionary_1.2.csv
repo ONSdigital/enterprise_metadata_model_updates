@@ -166,11 +166,6 @@ dcterms:identifier",STRING,Not Null,,
 ONS Metadata Model,dataset,resource_identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",STRING,Not Null,,
-ONS Metadata Model,dataset,dataset_frequency,"The frequency at which a dataset is published. May need to consider other frequencies as well - ie collected/acquired.
-
-dcterms:accrualPeriodicity
-
-range is dcterms:Frequency",STRING,Not Null,,
 ONS Metadata Model,dataset,dataset_geographical_coverage,"The spatial/geographical area covered by the dataset.
 
 dcterms:spatial",STRING,Not Null,,
@@ -282,6 +277,11 @@ spdx:checksumValue",INTEGER,Not Null,,
 ONS Metadata Model,resource,resource_identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",STRING,Not Null,,
+ONS Metadata Model,resource,resource_next_version_identifier,"A unique identifier of the resource being described or cataloged.
+
+dcterms:identifier
+
+dcat:nextVersion Note: this is an inverse property of dcat:previousVersion",STRING,Null,,
 ONS Metadata Model,resource,resource_title,"A name given to the dataset series
 
 dcterms:title",STRING,Not Null,,
@@ -331,7 +331,7 @@ ONS Metadata Model,resource,resource_replaces_identifier,"A unique identifier of
 http://purl.org/dc/terms/replaces
 
 dct:replaces",STRING,Null,,
-ONS Metadata Model,resource,resourcelanding_page_url,"A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.
+ONS Metadata Model,resource,resource_landing_page_url,"A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.
 
 dcat:landingPage",STRING,Null,,
 ONS Metadata Model,resource,resource_access_rights,"Details of the rights statement that concerns how the resource is accessed.
@@ -460,11 +460,6 @@ Definition:	Minimum spatial separation resolvable in a dataset, measured in mete
 But I've not seen this is in use throughout ONS )",STRING,Not Null,,
 ONS Metadata Model,resource,dataset_temporal_coverage_start_date,The calendar date that ...,DATE,Not Null,,
 ONS Metadata Model,resource,dataset_temporal_coverage_end_date,The calendar date that ...,DATE,Not Null,,
-ONS Metadata Model,resource,dataset_frequency,"A simple alphanumeric code representing the frequency at which a dataset is published.
-
-dcterms:accrualPeriodicity
-
-range is dcterms:Frequency",STRING,Not Null,,
 ONS Metadata Model,resource,dataset_previous_identifier,A system-assigned unique identifier for ???,STRING,Not Null,,
 ONS Metadata Model,resource,dataset_next_identifier,A system-assigned unique identifier for ???,STRING,Not Null,,
 ONS Metadata Model,resource,dataset_in_series_identifier,A system-assigned unique identifier for ???,STRING,Not Null,,
@@ -642,11 +637,6 @@ Definition:	Minimum spatial separation resolvable in a dataset, measured in mete
 But I've not seen this is in use throughout ONS )",STRING,Not Null,,
 ONS Metadata Model,resource,dataset_temporal_coverage_start_date,The calendar date that ...,DATE,Not Null,,
 ONS Metadata Model,resource,dataset_temporal_coverage_end_date,The calendar date that ...,DATE,Not Null,,
-ONS Metadata Model,resource,dataset_frequency,"A simple alphanumeric code representing the frequency at which a dataset is published.
-
-dcterms:accrualPeriodicity
-
-range is dcterms:Frequency",STRING,Not Null,,
 ONS Metadata Model,resource,dataset_previous_identifier,A system-assigned unique identifier for ???,STRING,Not Null,,
 ONS Metadata Model,resource,dataset_next_identifier,A system-assigned unique identifier for ???,STRING,Not Null,,
 ONS Metadata Model,resource,dataset_in_series_identifier,A system-assigned unique identifier for ???,STRING,Not Null,,
@@ -838,201 +828,62 @@ dcterms:description",STRING,Not Null,,
 ONS Metadata Model,catalogue_record,catalogue_record_title,"A name given to the record.
 
 dcterms:title",STRING,Not Null,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
+ONS Metadata Model,variable,variable_identifier,"A system-assigned unique identifier for the variable.
+
+dcterms:identifier",STRING,Not Null,,
+ONS Metadata Model,variable,variable_name,"The characteristic (name) of the variable
+
+see ddi-cdi: representedVariable.
+
+https://docs.ddialliance.org/DDI-CDI/1.0/model/FieldLevelDocumentation/DDICDILibrary/Classes/Conceptual/RepresentedVariable.html",STRING,Not Null,,
+ONS Metadata Model,variable,variable_value_domain,"How the measure will be represented (value domain).
+
+Example: Integer.
+
+Basically, the type of the variable. Refer to CDI-DDI: representedVariable
+
+https://docs.ddialliance.org/DDI-CDI/1.0/model/FieldLevelDocumentation/DDICDILibrary/Classes/Conceptual/RepresentedVariable.html ",STRING,Not Null,,
+ONS Metadata Model,variable,variable_description,"A free-text account of the variable
+
+dcterms:description",STRING,Not Null,,
+ONS Metadata Model,variable,variable_sequence_number,"A simple sequence number to identfy the order of the variable within the data structure.
+
+Analogous to DDI-CDI: ComponentPosition
+
+https://docs.ddialliance.org/DDI-CDI/1.0/model/FieldLevelDocumentation/DDICDILibrary/Classes/DataDescription/Components/ComponentPosition.html#super-class-hierarchy-generalization",SMALLINT,Not Null,,
+ONS Metadata Model,variable,resource_identifier,"A unique identifier of the resource being described or cataloged.
+
+dcterms:identifier",STRING,Not Null,,
+ONS Metadata Model,literal,literal_identifier,"A unique identifier of the literal being described or catalogued.
+
+
+dcterms:identifier",STRING,Not Null,,
+ONS Metadata Model,literal,resource_identifier,"A unique identifier of the resource being described or cataloged.
+
+dcterms:identifier",STRING,Not Null,,
+ONS Metadata Model,literal,literal_type,"The nature or genre of the literal
+
+dcterms:type
+
+The main type I have in mind is Alert (this might be unconventional, for instance this would usually be something like string or datetime)",STRING,Not Null,,
+ONS Metadata Model,literal,literal_description,"The description of the literal.
+
+dcterms:description
+
+note: this is the content of the literal. For instance, for a literal type Alert, this will be the text that shows in the body of the alert, if it is displayed.",STRING,Not Null,,
+ONS Metadata Model,frequency,frequency_identifier,"A unique identifier of the literal being described or catalogued.
+
+dcterms:identifier",STRING,Not Null,,
+ONS Metadata Model,frequency,resource_identifier,"A unique identifier of the resource being described or cataloged.
+
+dcterms:identifier",STRING,Not Null,,
+ONS Metadata Model,frequency,frequency_type,"The nature or genre of the frequency.
+
+dcterms:type
+
+For instance : publication, ingest...",STRING,Not Null,,
+ONS Metadata Model,frequency,frequency_description,"The description of the frequency
+
+dcterms:description
+
+note: this should be an enumerated list. Examples here include ""weekly"", ""monthly"", ""annually"" etc.",STRING,Not Null,,
