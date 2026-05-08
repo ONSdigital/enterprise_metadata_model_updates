@@ -16,5 +16,10 @@ Stakeholders for this decision are DS-DP and the EMM architects as a group. - SI
 
 TBC after discussion with EMM architects
 
-## Consequences
+UPDATE 8/5/26 - I talked about this briefly with Charles. Unsure about DCAT-AP classes but for now I can't see an easy way around this other than to just not model alerts. This might be why Mandy didn't include them? 
 
+Also thought about whether this should sit at the dataset level rather than resource, which would let datasets and dataset series use them... not sure, would data services have a use for annotation? 
+
+The issue here is about how or whether to incorporate all requirements into the model... each business area will have some niche demand for the catalogue to handle. I don't particularly see the harm as long as the domain profiles are put together properly.
+
+## Consequences

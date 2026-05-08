@@ -4,16 +4,17 @@ Date: 06/05/2026 17:13
 
 ## Status
 
-ACCEPTED
+PROPOSED
 
 ## Context
 
-While making an instance model to demonstrate versioning I noticed the model included a "Previous Version" identifier for Resources but not a "Next Version". dcat:nextVersion isn't a regular property in DCAT but it's an allowable inverse property and since we are already using "replaces" along with "isReplacedBy", I wanted to add it for consistency.
+While making an instance model to demonstrate versioning I noticed the model included a "Previous Version" identifier for Resources but not a "Next Version". dcat:nextVersion isn't a regular property in DCAT but it's an allowable inverse property and since we are already using "replaces" along with "isReplacedBy", I wanted to add it for consistency and to make it easier to build version chains.
 
 ## Decision
 
-To add "Resource Next Version Identifier" to Resouce.
+To add "Resource Next Version Identifier" to Resource? I've added it for now
+
+8/5/26 - I've talked to Keith (senior DA) and he said that it's an abnormal choice for this kind of model, as the catalogue can build a version chain by starting at the current version and working backwards. The Resource Next Version ID might be overkill as while it's allowed by DCAT it's not the default behaviour.
 
 ## Consequences
 
-Slightly more data entry/maintenance overhead, however when a next version is known (ie when it is entered) it should make it easier for systems or analysts to build a version chain.
