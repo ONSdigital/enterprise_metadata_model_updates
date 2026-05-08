@@ -170,11 +170,6 @@ dcterms:identifier",VARCHAR(40),Not Null
 ONS Metadata Model,,Dataset,Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
-ONS Metadata Model,,Dataset,Dataset Frequency,"The frequency at which a dataset is published. May need to consider other frequencies as well - ie collected/acquired.
-
-dcterms:accrualPeriodicity
-
-range is dcterms:Frequency",VARCHAR(10),Not Null
 ONS Metadata Model,,Dataset,Dataset Geographical Coverage,"The spatial/geographical area covered by the dataset.
 
 dcterms:spatial",VARCHAR(10),Not Null
@@ -284,6 +279,11 @@ spdx:checksumValue",NUMBER,Not Null
 ONS Metadata Model,,Resource,Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
+ONS Metadata Model,,Resource,Resource Next Version Identifier,"A unique identifier of the resource being described or cataloged.
+
+dcterms:identifier
+
+dcat:nextVersion Note: this is an inverse property of dcat:previousVersion",VARCHAR(40),Null
 ONS Metadata Model,,Resource,Resource Title,"A name given to the dataset series
 
 dcterms:title",VARCHAR(100),Not Null
@@ -333,7 +333,7 @@ ONS Metadata Model,,Resource,Resource Replaces Identifier,"A unique identifier o
 http://purl.org/dc/terms/replaces
 
 dct:replaces",VARCHAR(40),Null
-ONS Metadata Model,,Resource,ResourceLanding Page URL,"A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.
+ONS Metadata Model,,Resource,Resource Landing Page URL,"A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.
 
 dcat:landingPage",VARCHAR(255),Null
 ONS Metadata Model,,Resource,Resource Access Rights,"Details of the rights statement that concerns how the resource is accessed.
@@ -453,11 +453,6 @@ Definition:	Minimum spatial separation resolvable in a dataset, measured in mete
 But I've not seen this is in use throughout ONS )",VARCHAR(10),Not Null
 ONS Metadata Model,,Resource,Dataset Temporal Coverage Start Date,The calendar date that ...,DATE,Not Null
 ONS Metadata Model,,Resource,Dataset Temporal Coverage End Date,The calendar date that ...,DATE,Not Null
-ONS Metadata Model,,Resource,Dataset Frequency,"A simple alphanumeric code representing the frequency at which a dataset is published.
-
-dcterms:accrualPeriodicity
-
-range is dcterms:Frequency",VARCHAR(10),Not Null
 ONS Metadata Model,,Resource,Dataset Previous Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Dataset Next Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Dataset In Series Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
@@ -617,11 +612,6 @@ Definition:	Minimum spatial separation resolvable in a dataset, measured in mete
 But I've not seen this is in use throughout ONS )",VARCHAR(10),Not Null
 ONS Metadata Model,,Resource,Dataset Temporal Coverage Start Date,The calendar date that ...,DATE,Not Null
 ONS Metadata Model,,Resource,Dataset Temporal Coverage End Date,The calendar date that ...,DATE,Not Null
-ONS Metadata Model,,Resource,Dataset Frequency,"A simple alphanumeric code representing the frequency at which a dataset is published.
-
-dcterms:accrualPeriodicity
-
-range is dcterms:Frequency",VARCHAR(10),Not Null
 ONS Metadata Model,,Resource,Dataset Previous Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Dataset Next Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 ONS Metadata Model,,Resource,Dataset In Series Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
@@ -801,6 +791,81 @@ dcterms:description",VARCHAR(100),Not Null
 ONS Metadata Model,,Catalogue Record,Catalogue Record Title,"A name given to the record.
 
 dcterms:title",VARCHAR(100),Not Null
+ONS Metadata Model,,Variable,Variable Identifier,"A system-assigned unique identifier for the variable.
+
+dcterms:identifier",VARCHAR(40),Not Null
+ONS Metadata Model,,Variable,Variable Name,"The characteristic (name) of the variable
+
+see ddi-cdi: representedVariable.
+
+https://docs.ddialliance.org/DDI-CDI/1.0/model/FieldLevelDocumentation/DDICDILibrary/Classes/Conceptual/RepresentedVariable.html",VARCHAR(100),Not Null
+ONS Metadata Model,,Variable,Variable Value Domain,"How the measure will be represented (value domain).
+
+Example: Integer.
+
+Basically, the type of the variable. Refer to CDI-DDI: representedVariable
+
+https://docs.ddialliance.org/DDI-CDI/1.0/model/FieldLevelDocumentation/DDICDILibrary/Classes/Conceptual/RepresentedVariable.html ",VARCHAR(10),Not Null
+ONS Metadata Model,,Variable,Variable Description,"A free-text account of the variable
+
+dcterms:description",VARCHAR(100),Not Null
+ONS Metadata Model,,Variable,Variable Sequence Number,"A simple sequence number to identfy the order of the variable within the data structure.
+
+Analogous to DDI-CDI: ComponentPosition
+
+https://docs.ddialliance.org/DDI-CDI/1.0/model/FieldLevelDocumentation/DDICDILibrary/Classes/DataDescription/Components/ComponentPosition.html#super-class-hierarchy-generalization",SMALLINT,Not Null
+ONS Metadata Model,,Variable,Resource Identifier,"A unique identifier of the resource being described or cataloged.
+
+dcterms:identifier",VARCHAR(40),Not Null
+ONS Metadata Model,,Literal,Literal Identifier,"A unique identifier of the literal being described or catalogued.
+
+
+dcterms:identifier",VARCHAR(40),Not Null
+ONS Metadata Model,,Literal,Resource Identifier,"A unique identifier of the resource being described or cataloged.
+
+dcterms:identifier",VARCHAR(40),Not Null
+ONS Metadata Model,,Literal,Literal Type,"The nature or genre of the literal
+
+dcterms:type
+
+The main type I have in mind is Alert (this might be unconventional, for instance this would usually be something like string or datetime)",VARCHAR(10),Not Null
+ONS Metadata Model,,Literal,Literal Description,"The description of the literal.
+
+dcterms:description
+
+note: this is the content of the literal. For instance, for a literal type Alert, this will be the text that shows in the body of the alert, if it is displayed.",VARCHAR(100),Not Null
+ONS Metadata Model,,Frequency,Frequency Identifier,"A unique identifier of the literal being described or catalogued.
+
+dcterms:identifier",VARCHAR(40),Not Null
+ONS Metadata Model,,Frequency,Resource Identifier,"A unique identifier of the resource being described or cataloged.
+
+dcterms:identifier",VARCHAR(40),Not Null
+ONS Metadata Model,,Frequency,Frequency Type,"The nature or genre of the frequency.
+
+dcterms:type
+
+For instance : publication, ingest...",VARCHAR(10),Not Null
+ONS Metadata Model,,Frequency,Frequency Description,"The description of the frequency
+
+dcterms:description
+
+note: this should be an enumerated list. Examples here include ""weekly"", ""monthly"", ""annually"" etc.",VARCHAR(100),Not Null
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
 ,,,,,,
 ,,,,,,
 ,,,,,,
