@@ -4,7 +4,7 @@ Date: 07/05/2026 17:49
 
 ## Status
 
-PROPOSED
+ACCEPTED
 
 ## Context
 
@@ -22,4 +22,8 @@ Also thought about whether this should sit at the dataset level rather than reso
 
 The issue here is about how or whether to incorporate all requirements into the model... each business area will have some niche demand for the catalogue to handle. I don't particularly see the harm as long as the domain profiles are put together properly.
 
+UPDATE : 12/5/26 - Sam I met with Charles B, Kirti T and Lorraine C and discussed this. While it's not ideal it is probably a workable solution. The Literal class will stay in the model (subtypes include Alert, Usage Note, Annotation)
+
 ## Consequences
+
+Added to the model already so no changes. Sam I will need to add other properties to the class (title and date) to cover additional use cases. 
