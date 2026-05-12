@@ -16,5 +16,7 @@ To add "Resource Next Version Identifier" to Resource? I've added it for now
 
 8/5/26 - I've talked to Keith (senior DA) and he said that it's an abnormal choice for this kind of model, as the catalogue can build a version chain by starting at the current version and working backwards. The Resource Next Version ID might be overkill as while it's allowed by DCAT it's not the default behaviour.
 
+12/05 Discussion between Charles B, Kirti T, Lorraine C and Sam I. : outcome was that there are pros and cons to this. Planning to talk to James Anderson to discuss the tradeoff between ease of integration and increased risk of data entry/update errors.
+
 ## Consequences
 
