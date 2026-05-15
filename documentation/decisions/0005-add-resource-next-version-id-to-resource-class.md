@@ -4,7 +4,7 @@ Date: 06/05/2026 17:13
 
 ## Status
 
-PROPOSED
+DEPRECATED
 
 ## Context
 
@@ -18,5 +18,9 @@ To add "Resource Next Version Identifier" to Resource? I've added it for now
 
 12/05 Discussion between Charles B, Kirti T, Lorraine C and Sam I. : outcome was that there are pros and cons to this. Planning to talk to James Anderson to discuss the tradeoff between ease of integration and increased risk of data entry/update errors.
 
+15/5 We did not actually discuss this at the meeting. As a result, following senior data architect advice (Keith), and creating an instance model that showed that these properties are not strictly necessary the inverse properties were removed from the model. 
+
+
 ## Consequences
 
+The model is simpler to understand and should still be functional. The relationship lines are now labelled reciprocally instead. If the inverse properties are required for any classes this decision can be revisited and the inverse properties restored.

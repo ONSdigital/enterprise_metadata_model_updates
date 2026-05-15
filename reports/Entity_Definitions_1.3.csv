@@ -52,17 +52,6 @@ Data Service is a metadata entity describing a logical access endpoint (such as 
 Checksum,"A Checksum is a value that allows to check the integrity of the contents of a file. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented [SPDX].
 
 spdx:Checksum",,
-Resource,"Resource published or curated by a single agent.
-
-dcat:Resource
-
-The class of all cataloged resources, the super-class of dcat:Dataset, dcat:DataService, dcat:Catalog and any other member of a dcat:Catalog.
-
-This class carries properties common to all cataloged resources, including datasets and data services.
-
-The instances of this class SHOULD be included in a catalog.
-
-When describing a resource which is not a dcat:Dataset or dcat:DataService, it is recommended to create a suitable sub-class of dcat:Resource, or use dcat:Resource with the dcterms:type property to indicate the specific type.",,
 Catalogue Record,"A record in a catalog, describing the registration of a single dcat:Resource.
 
 dcat:CatalogRecord",,
@@ -73,7 +62,7 @@ Conceptual variable with a substantive value domain specified.
 Example: The pair (Number of Employees, Integer), where “Number of Employees” is the characteristic of the population (variable) and “Integer” is how that measure will be represented (value domain).
 
 NOTE: This is NOT actually compliant with either DCAT or DDI-CDI and is included as a tactical measure. The Represented Variable is a DDI-CDI class but is significantly more complicated than explained here (to work as intended it needs to be connected to various other classes not represented here)",,
-Literal,"A literal value such as a string or integer; Literals may be typed, e.g. as a date according to xsd:date. Literals that contain human-readable text have an optional language tag as defined by BCP 47 [rfc5646].
+Annotation,"A literal value such as a string or integer; Literals may be typed, e.g. as a date according to xsd:date. Literals that contain human-readable text have an optional language tag as defined by BCP 47 [rfc5646].
 
 DCAT-AP:literal
 
@@ -91,3 +80,14 @@ https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Frequency
 dcat-ap:frequency
 
 This has been included as datasets have multiple frequencies at different levels that need to be captured. For instance, publication, delivery, ingest etc. ",,
+Resource,"Resource published or curated by a single agent.
+
+dcat:Resource
+
+The class of all cataloged resources, the super-class of dcat:Dataset, dcat:DataService, dcat:Catalog and any other member of a dcat:Catalog.
+
+This class carries properties common to all cataloged resources, including datasets and data services.
+
+The instances of this class SHOULD be included in a catalog.
+
+When describing a resource which is not a dcat:Dataset or dcat:DataService, it is recommended to create a suitable sub-class of dcat:Resource, or use dcat:Resource with the dcterms:type property to indicate the specific type.",,

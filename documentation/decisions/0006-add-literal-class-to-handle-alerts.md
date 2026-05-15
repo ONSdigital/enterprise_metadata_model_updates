@@ -4,7 +4,7 @@ Date: 07/05/2026 17:49
 
 ## Status
 
-PROPOSED
+ACCEPTED
 
 ## Context
 
@@ -22,4 +22,8 @@ Also thought about whether this should sit at the dataset level rather than reso
 
 The issue here is about how or whether to incorporate all requirements into the model... each business area will have some niche demand for the catalogue to handle. I don't particularly see the harm as long as the domain profiles are put together properly.
 
+Following discussion on 12/5 it was decided to keep the Literal class.  The class has been renamed to Annotation to capture what it is supposed to be doing a bit better. 
+
 ## Consequences
+
+DS-DP are able to have alerts and usage notes as they wanted, so it will mean fewer changes for them. The class can be extended with different Annotation Types in future to meet other requirements in future.
