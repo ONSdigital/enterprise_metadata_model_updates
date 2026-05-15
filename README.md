@@ -20,46 +20,35 @@ When it is complete it will consist of :
 
 ## Latest version
 
-**Updated** - Fri 8/5/26  
-**Version** - Version 1.2 . Erwin model version 21 
+**Updated** - Fri 15/5/26  
+**Version** - Version 1.3 . Erwin model version 22 
 
 ## News
 
-New classes to support DORA/DS-DP requirements have been added to the model (specifically Literal, Variable and Frequency classes). See the [Entity Definitions report](/reports/Entity_Definitions_1.2.csv) for more details.
+Following some careful digging, instance diagramming and lots and lots of in-depth discussions (thank you Wilfred, Lorraine, Charles, Kirti, Tanita, Hollie, Laura and Rob especially) the metadata model now covers the required properties for dissemination/digital publishing. 
 
-A legend has been added to the Logical Diagram.
+Said instance diagram is available in [diagrams/dissemination](https://github.com/ONSdigital/enterprise_metadata_model_updates/tree/main/diagrams/dissemination)
 
-**Architectural Decision Record** is updated. As of 8/5 the current decisions are outstanding (mostly I've already put them in the model but it would be good to review those changes). Have a look in the [documentation/decisions](documentation/decisions) directory for more information.
+Physical diagrams and reports have, for now, been removed as there's no need for an "overall" metadata model schema and they don't reveal anything the logical models and reports don't already cover. These will reappear in domain profiles as they near completion.
 
-New decisions are decisions 4-7. The proposed decisions are:
-
-- ***5**: [Add Resource Next Version ID to Resource class](documentation/decisions/0005-add-resource-next-version-id-to-resource-class.md)*
-- ***6**: [Add Literal class to handled Alerts](documentation/decisions/0006-add-literal-class-to-handle-alerts.md)*
-
+**Architectural Decision Record** continues to be updated. Have a look in the [documentation/decisions](documentation/decisions) directory to review any recent decisions.
 
 ## Diagrams
 
 ### Conceptual
-![V1.2 Conceptual](/diagrams/METADATA_MODEL_CONCEPTUAL_V1.2.PNG)
+![V1.3 Conceptual](/diagrams/METADATA_MODEL_CONCEPTUAL_V1.3.PNG)
 
 ### Logical
-![V1.2 Logical](/diagrams/METADATA_MODEL_LOGICAL_V1.2.PNG)
-
-### Physical
-
-*(JSON architecture)*
-![V1.2 Physical](/diagrams/METADATA_MODEL_PHYSICAL_V1.2.PNG)
-
+![V1.3 Logical](/diagrams/METADATA_MODEL_LOGICAL_V1.3.PNG)
 
 ## Files
 
-Reports and json directories are updated for version 1.2.
+Reports are updated for version 1.3. The json reflects version 1.2 but is in line for an update shortly (it will also move to the appropriate domain profiles).
 
 ## To do
 
-- Dissemination domain profile and JSON for DS-DP.
-- DORA profile and JSON
-- Improve the format of this repo
+- Dissemination domain profile due next week.
+- DORA profile being worked on by the rest of the team
 
 ## Contact
 
