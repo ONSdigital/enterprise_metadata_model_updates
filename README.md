@@ -52,6 +52,7 @@ Reports are updated for version 1.4. The JSON has been removed as it is a few ve
 - Version 1.5 will bring the model and dissemination domain profile to a stable position. This is due by Friday the 19th of June.
 - Instructions for updating the repository will allow EMM project members to contribute to this repository.
 - Version 2 will focus on incorporating the DORA (process phase) domain profile into the model.
+- As the model is formally adopted, changing it will have implications across the business. Updates will therefore slow down and begin to follow a more predictable cycle (the form this cycle will take is not yet decided)
 
 ## Contact
 
