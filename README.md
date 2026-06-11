@@ -2,9 +2,9 @@
 
 This is a repository for people to access artifacts around the ONS enterprise-wide **metadata model** and any **domain profiles** created from it.
 This will include reports, documentation, instance diagrams and any other thing useful for understanding the model.
-It will be updated weekly on Fridays until it reaches a more settled state.
+It will typically be updated on Fridays.
 
-Please watch this repo for updates or come back around the 12th of June :)
+The next update is expected by Friday 19 June.
 
 The models and reviews are (at least temporarily) [mirrored on ONS SharePoint](https://officenationalstatistics.sharepoint.com/sites/Metadata/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FMetadata%2FShared%20Documents%2F1%2E%20Enterprise%20Metadata%20Management%20%28EMM%29%2FEMM%20Workstreams%2FONS%20Metadata%20Model&viewid=22b51cd2%2D15c6%2D4d18%2Dbc10%2Dbc9e433ec574&newTargetListUrl=%2Fsites%2FMetadata%2FShared%20Documents&viewpath=%2Fsites%2FMetadata%2FShared%20Documents%2FForms%2FAllItems%2Easpx) if you need to share with anyone who doesn't have an ONS Digital account. [🔗Link](https://officenationalstatistics.sharepoint.com/sites/Metadata/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FMetadata%2FShared%20Documents%2F1%2E%20Enterprise%20Metadata%20Management%20%28EMM%29%2FEMM%20Workstreams%2FONS%20Metadata%20Model&viewid=22b51cd2%2D15c6%2D4d18%2Dbc10%2Dbc9e433ec574&newTargetListUrl=%2Fsites%2FMetadata%2FShared%20Documents&viewpath=%2Fsites%2FMetadata%2FShared%20Documents%2FForms%2FAllItems%2Easpx)
 
@@ -49,13 +49,13 @@ Reports are updated for version 1.4. The JSON has been removed as it is a few ve
 
 ## To do
 
-- I (Samantha) am going on vacation for two weeks and not thinking about metadata. This repository is unlikely to see any updates before I return.
-- The DAB team is continuing to develop the DORA and DS-DP domain profiles and overall metadata model design
-- When I return I plan to improve the documentation based on feedback I receive
+- Version 1.5 will bring the model and dissemination domain profile to a stable position. This is due by Friday the 19th of June.
+- Instructions for updating the repository will allow EMM project members to contribute to this repository.
+- Version 2 will focus on incorporating the DORA (process phase) domain profile into the model.
 
 ## Contact
 
 Message Samantha Iacob on teams or email [samantha.iacob@ons.gov.uk](mailto:samantha.iacob@ons.gov.uk)
 I am always happy to discuss ways to improve the model (I would like it to be used so it has to work for you!)
 
-While I am away (or even when I'm here) please contact Kirti Tandel or Hollie Young to discuss everything metadata model.
+You could also reach out to Kirti Tandel, Hollie Young, Wilfred Inuaghata or Lorraine Crichton for more information. 
