@@ -4,7 +4,7 @@ Date: 12/05/2026 14:24
 
 ## Status
 
-ACCEPTED
+SUPERCEDED by 0014 - Remove 'hard coded' actors from Resource on 19/6/26
 
 ## Context
 
