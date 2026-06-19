@@ -4,7 +4,7 @@ Date: 07/05/2026 17:49
 
 ## Status
 
-ACCEPTED
+SUPERCEDED by 0013 - Replace Annotation Class with Usage Note in Dataset, 18/6/26
 
 ## Context
 

@@ -4,7 +4,7 @@ Date: 12/05/2026 14:14
 
 ## Status
 
-PROPOSED
+REJECTED
 
 ## Context
 
@@ -16,4 +16,8 @@ It would be a good idea to remove Data Service, its relationships and associativ
 
 This will be discussed with James A, a technical architect, to see whether the class is vital or can be dropped for now. 
 
+Following these conversations it is apparent that the class is essential so should be kept.
+
 ## Consequences
+
+This class is to be kept. It has been reintroduced to the dissemination profile.
