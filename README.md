@@ -40,7 +40,7 @@ The main changes are:
 
 The updated draft guidance for interpreting the metadata model is available here: [Metadata_Model_Documentation_0.2.docx](https://github.com/ONSdigital/enterprise_metadata_model_updates/raw/refs/heads/main/documentation/Metadata_Model_Documentation_0.2.docx) 
 
-The updated draft domain profile guidance for dissemination is here: [Dissemination_Domain_Profile_Documentation_0.2.docx](https://github.com/ONSdigital/enterprise_metadata_model_updates/raw/refs/heads/main/documentation/domain_profile_DS_DP/Dissemination_Domain_Profile_Documentation_0.2.docx). 
+The updated draft domain profile guidance for dissemination is here: [Dissemination_Domain_Profile_Documentation_0.2.docx](https://github.com/ONSdigital/enterprise_metadata_model_updates/raw/refs/heads/main/documentation/domain_profile_dissemination/Dissemination_Domain_Profile_Documentation_0.2.docx). 
 
 Instance diagrams and the domain-specific conceptual and logical models for DS-DP are now available in the appropriate part of the diagrams directory [here](https://github.com/ONSdigital/enterprise_metadata_model_updates/tree/main/diagrams/dissemination).
 
