@@ -4,7 +4,7 @@ This is a repository for people to access artifacts around the ONS enterprise-wi
 This will include reports, documentation, instance diagrams and any other thing useful for understanding the model.
 It will typically be updated on Fridays.
 
-The next update is expected by Friday 26 June.
+With the release of version 1.5 and the draft documentation for the metadata model and the dissemination profile, the update schedule is on hiatus. The next update to this repository will be to improve the processes around managing it and its associated resources before work resumes on the models based on feedback.
 
 The models and reviews are (at least temporarily) [mirrored on ONS SharePoint](https://officenationalstatistics.sharepoint.com/sites/Metadata/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FMetadata%2FShared%20Documents%2F1%2E%20Enterprise%20Metadata%20Management%20%28EMM%29%2FEMM%20Workstreams%2FONS%20Metadata%20Model&viewid=22b51cd2%2D15c6%2D4d18%2Dbc10%2Dbc9e433ec574&newTargetListUrl=%2Fsites%2FMetadata%2FShared%20Documents&viewpath=%2Fsites%2FMetadata%2FShared%20Documents%2FForms%2FAllItems%2Easpx) if you need to share with anyone who doesn't have an ONS Digital account. [🔗Link](https://officenationalstatistics.sharepoint.com/sites/Metadata/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FMetadata%2FShared%20Documents%2F1%2E%20Enterprise%20Metadata%20Management%20%28EMM%29%2FEMM%20Workstreams%2FONS%20Metadata%20Model&viewid=22b51cd2%2D15c6%2D4d18%2Dbc10%2Dbc9e433ec574&newTargetListUrl=%2Fsites%2FMetadata%2FShared%20Documents&viewpath=%2Fsites%2FMetadata%2FShared%20Documents%2FForms%2FAllItems%2Easpx)
 
@@ -20,27 +20,31 @@ When it is complete it will consist of :
 
 ## Latest version
 
-**Updated** - Fri 19/6/26  
-**Version** - Version 1.5. Erwin model version 31 
+**Updated** - Wednesday 24/6/26  
+**Version** - Version 1.5. Erwin model version 33 
 
 ## News
 
-This is a technical update which only includes the models and reports, supporting documentation will be updated over the next week.
+The model draft and documentation has been approved at a **Data Architecture Review Panel**.
+
+Documentation for the metadata model and dissemination profile are now at 0.2, or a less rough draft. Reports and models updated.
 
 The main changes are:
 - A new **Resource Documentation** class - you don't have to create docs as a dataset anymore which should make life easier.
 - Removed the **Annotation** class due to the risk of having a kind of "dump" class for notes and things and some ambiguity about what kind of messages go in there, and why. It has been absorbed into the already existing _Version Note_ and the new _Usage Note_ properties.
 - Removed **Variable** as it is not currently required by any stakeholders. Schema and variable-level metadata is important and complex to model, and it touches on a lot of business areas, so we will take the time to get it right.
+- Caught an embarrassing error around how Data Services were wired up in the model and fixed it.
+- Added a few bits and pieces to the model to reflect feedback from James Anderson (thank you for your help with this!)
 - Renamed DS-DP things to Dissemination to reflect the GSBPM stage the catalogue is working with. A minor change now but this will help everyone sing from the same hymn sheet later on.
 - Physical diagram removed entirely from the ONS metadata model. It wasn't being updated or published here and it wasn't helpful to maintain it for the time being. Physical diagrams belong with their domain profiles and will be released as they're completed.
 
-Draft guidance for interpreting the metadata model is available! Download it here: [Metadata_Model_Documentation_0.1.docx](https://github.com/ONSdigital/enterprise_metadata_model_updates/raw/refs/heads/main/documentation/Metadata_Model_Documentation_0.1.docx) This is currently in line with version 1.4 and will be updated over the next week. 
+The updated draft guidance for interpreting the metadata model is available here: [Metadata_Model_Documentation_0.2.docx](https://github.com/ONSdigital/enterprise_metadata_model_updates/raw/refs/heads/main/documentation/Metadata_Model_Documentation_0.2.docx) 
 
-The first domain profile guidance is out too, for DS-DP. It's designed to be read together with the Metadata Model Documentation. Download it here: [DS-DP_Domain_Profile_Documentation_0.1.docx](https://github.com/ONSdigital/enterprise_metadata_model_updates/raw/refs/heads/main/documentation/domain_profile_DS_DP/DS-DP_Domain_Profile_Documentation_0.1.docx). Likewise this is slightly outdated given the new model and will be updated.
+The updated draft domain profile guidance for dissemination is here: [Dissemination_Domain_Profile_Documentation_0.2.docx](https://github.com/ONSdigital/enterprise_metadata_model_updates/raw/refs/heads/main/documentation/domain_profile_DS_DP/Dissemination_Domain_Profile_Documentation_0.2.docx). 
 
-Instance diagrams and the domain-specific conceptual and logical models for DS-DP are now available in the appropriate part of the diagrams directory [here](https://github.com/ONSdigital/enterprise_metadata_model_updates/tree/main/diagrams/ds-dp).
+Instance diagrams and the domain-specific conceptual and logical models for DS-DP are now available in the appropriate part of the diagrams directory [here](https://github.com/ONSdigital/enterprise_metadata_model_updates/tree/main/diagrams/dissemination).
 
-These documents and resources are in an early state of development and feedback will be very gratefully received. 
+These documents and resources are still in an early state of development and feedback will be very gratefully received. 
 
 Please continue to review the Architecture Decision Records in the [documentation/decisions](documentation/decisions) directory to keep abreast of any recent decisions.
 
@@ -58,9 +62,7 @@ Reports are updated for version 1.5.
 
 ## To do
 
-- Bring the documentation for the overall model and the dissemination profile in line with the diagrams. This is due by 26 June.
 - Instructions for updating the repository will allow EMM project members to contribute to this repository.
-- Version 2 will focus on incorporating the DORA (process phase) domain profile into the model.
 - As the model is formally adopted, changing it will have implications across the business. Updates will therefore slow down and begin to follow a more predictable cycle (the form this cycle will take is not yet decided)
 
 ## Contact
