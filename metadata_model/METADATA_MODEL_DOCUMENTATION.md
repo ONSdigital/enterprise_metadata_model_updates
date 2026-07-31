@@ -9,9 +9,9 @@
 - [Purpose](#purpose)
 - [Terminology](#terminology)
 - [Components](#components)
-  - [Conceptual Metadata Model](#conceptual-metadata-model)
+  - [Conceptual Metadata Diagram](#conceptual-metadata-diagram)
     - [Core concepts](#core-concepts)
-  - [Logical Metadata Model](#logical-metadata-model)
+  - [Logical Metadata Diagram](#logical-metadata-diagram)
     - [Explanation of key classes](#explanation-of-key-classes)
 - [Series](#series)
 - [Ad Hoc Datasets](#ad-hoc-datasets)
@@ -84,9 +84,9 @@ A *Metadata Profile* is a specialised subset of the ONS metadata model for a par
 
 A Profile-Specific *Data Standard* defines the agreed rules, formats, and quality expectations for how specific types of data and metadata must be structured and recorded, ensuring consistency, interoperability, and reliable reuse across systems and dissemination processes.
 
-### Conceptual Metadata Model
+### Conceptual Metadata Diagram
 
-A conceptual metadata model explains the structure of the catalogue using only the core concepts and the relationships between them. It isn’t detailed enough to inform a functional catalogue on its own but is designed to be easy to read and communicate:
+A conceptual metadata diagram explains the structure of the catalogue using only the core concepts and the relationships between them. It isn’t detailed enough to inform a functional catalogue on its own but is designed to be easy to read and communicate:
 
 ![Conceptual Metadata Model diagram](images/diagrams/METADATA_MODEL_CONCEPTUAL.png)
 
