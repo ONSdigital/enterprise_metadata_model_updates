@@ -37,7 +37,7 @@ Not to forget the model itself, there have been some slight changes in response 
 
 The updated guidance for interpreting the metadata model is available here: [Metadata_Model_Documentation](metadata_model/METADATA_MODEL_DOCUMENTATION.md)
 
-The current metadata profile guidance for dissemination is here: [Dissemination_Domain_Profile_Documentation_1.0.docx](metadata_profiles/dissemination/DISSEMINATION_METADATA_PROFILE_DOCUMENTATION.md). This document isn't standalone and should be read alongside the metadata model documentation.
+The current metadata profile guidance for dissemination is here: [Dissemination_Metadata_Profile](metadata_profiles/dissemination/DISSEMINATION_METADATA_PROFILE_DOCUMENTATION.md). This document isn't standalone and should be read alongside the metadata model documentation.
 
 Please continue to review the Architecture Decision Records in the [documents/decisions](documents/decisions) directory to keep abreast of any recent decisions.
 
