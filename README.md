@@ -1,70 +1,62 @@
 # Model Updates
 
-This is a repository for people to access artifacts around the ONS enterprise-wide **metadata model** and any **domain profiles** created from it.
+This is a repository for people to access artifacts around the ONS enterprise-wide **metadata model** and any **metadata profiles** created from it.
 This will include reports, documentation, instance diagrams and any other thing useful for understanding the model.
-It will typically be updated on (or near) Fridays whenever an update is required..
-
-
-The models and reviews are (at least temporarily) [mirrored on ONS SharePoint](https://officenationalstatistics.sharepoint.com/sites/Metadata/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FMetadata%2FShared%20Documents%2F1%2E%20Enterprise%20Metadata%20Management%20%28EMM%29%2FEMM%20Workstreams%2FONS%20Metadata%20Model&viewid=22b51cd2%2D15c6%2D4d18%2Dbc10%2Dbc9e433ec574&newTargetListUrl=%2Fsites%2FMetadata%2FShared%20Documents&viewpath=%2Fsites%2FMetadata%2FShared%20Documents%2FForms%2FAllItems%2Easpx) if you need to share with anyone who doesn't have an ONS Digital account. [🔗Link](https://officenationalstatistics.sharepoint.com/sites/Metadata/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FMetadata%2FShared%20Documents%2F1%2E%20Enterprise%20Metadata%20Management%20%28EMM%29%2FEMM%20Workstreams%2FONS%20Metadata%20Model&viewid=22b51cd2%2D15c6%2D4d18%2Dbc10%2Dbc9e433ec574&newTargetListUrl=%2Fsites%2FMetadata%2FShared%20Documents&viewpath=%2Fsites%2FMetadata%2FShared%20Documents%2FForms%2FAllItems%2Easpx)
+Until a regular cadence for updates is established it will typically be updated on or around Fridays as required.
 
 ## Introduction
 
-The ONS metadata model describes an enterprise data catalogue which is based on international standards and identified requirements from business areas that will be interacting with it. To deliver this as quickly as possible it is being built in a top-down and bottom-up way at the same time. The model as it exists now is mostly the top-down, which describes a compliant data catalogue that would work for most general purposes. The bottom-up part involves incorporating different business areas and developing new classes and properties that they need, outputting the model in the format they need for their purposes - ie JSON for an API, or a logical domain profile for a dashboard developer.
+The ONS metadata model describes an enterprise data catalogue which is based on international standards and identified requirements from business areas that will be interacting with it. To deliver this as quickly as possible it is being built in a top-down and bottom-up way at the same time. The model as it exists now is mostly the top-down, which describes a compliant data catalogue that would work for most general purposes. The bottom-up part involves incorporating different business areas and developing new classes and properties that they need, outputting the model in the format they need for their purposes - ie JSON for an API, or a logical metadata profile for a dashboard developer.
 
 When it is complete it will consist of :
 
-- An **enterprise metadata model** (all classes and their properties) with a conceptual and logical view.
-- A **domain profile** for each business area (a logical and, where needed or practicable, a physical model of the classes and properties used in that area)
-- **Documentation** and, where needed, **instance diagrams** supporting the model and each domain profile
+- An **enterprise metadata model** (all classes and their properties) with a conceptual and logical view, and once a cataloguing solution is identified a physical diagram as well.
+- A **metadata profile** for each business area that requires it (a logical and, where needed or practicable, a physical model of the classes and properties used in that area)
+- **Documentation** and, where needed, **instance diagrams** supporting the model and any metadata profiles
 
 ## Latest version
 
-**Updated** - Wednesday 8/7/26  
-**Version** - Version 1.6. Erwin model version 41 
+**Updated** - Wednesday 31/7/26  
+**Version** - Version 1.7. Erwin model version 54 
 
 ## News
 
-Documentation for the dissemination profile is at 1.0, or ready to release.
+Exciting changes - as you may have noticed the repository structure has changed. This is in response to feedback from the business and means that GitHub is able to handle our versioning needs rather than relying on a mix of tables in Word documents.
 
-A new dissemination profile diagram has been created which shows how the model can be resolved into a more traditional entity-relationship shape, ready to feed into a physical model and schema.
+Major upgrades:
+- The documentation is now in markdown, allowing easy comparison between commits.
+- The file structure is slightly more logical, with diagrams found near the documents explaining them
+- Made the licence for the model explicit with a LICENSE.txt
+- Most excitingly, made the repository public in line with ONS Github Usage Policy (since there is nothing sensitive here)
 
-The main changes are:
-- Slight changes to the Resource Documentation class to allow it to carry access rights and other information
-- Model cleaned up and reference to Ontology workstream removed
-- Domain profile diagram for dissemination
-- Dissemination domain profile updated based on feedback (thank you especially to Laura and Rob)
-- Draft instructions for maintaining this repo is in the new documentation/data_architecture directory.
-The draft guidance for interpreting the metadata model is available here: [Metadata_Model_Documentation_0.2.docx](https://github.com/ONSdigital/enterprise_metadata_model_updates/raw/refs/heads/main/documentation/Metadata_Model_Documentation_0.2.docx) 
+These changes will allow us to decommission the SharePoint mirror, leaving the repository as the single source of truth for the model. On a personal note I won't miss it, updating it was a bit of a bear!
 
-The updated draft domain profile guidance for dissemination is here: [Dissemination_Domain_Profile_Documentation_1.0.docx](https://github.com/ONSdigital/enterprise_metadata_model_updates/raw/refs/heads/main/documentation/domain_profile_dissemination/Dissemination_Domain_Profile_Documentation_1.0.docx). These two documents should be read together.
+As this situation has become urgent we have begun work on developing a versioning system with an actual update cycle. This will let us manage our workload far more effectively than we have been up until now.
 
-Instance diagrams and the domain-specific conceptual and logical models for Dissemination are available in the appropriate part of the diagrams directory [here](https://github.com/ONSdigital/enterprise_metadata_model_updates/tree/main/diagrams/dissemination).
+Not to forget the model itself, there have been some slight changes in response to recent feedback and to prepare for developing a Provenance capability. The main one is that the Attribution class relationships have all been made non-identifying and a new identifer has been added for Attribution. References to domain profiles have been stripped out as the nomenclature was incorrect, and for the logical diagrams the colour-coding of classes based on the flavour of W3C-approved standard the class was borrowed from has been removed as it was no longer helpful.
 
-Please continue to review the Architecture Decision Records in the [documentation/decisions](documentation/decisions) directory to keep abreast of any recent decisions (nothing important recorded this week, sorry).
+The updated guidance for interpreting the metadata model is available here: [Metadata_Model_Documentation](metadata_model/METADATA_MODEL_DOCUMENTATION.md)
+
+The current metadata profile guidance for dissemination is here: [Dissemination_Domain_Profile_Documentation_1.0.docx](metadata_profiles/dissemination/DISSEMINATION_METADATA_PROFILE_DOCUMENTATION.md). This document isn't standalone and should be read alongside the metadata model documentation.
+
+Please continue to review the Architecture Decision Records in the [documents/decisions](documents/decisions) directory to keep abreast of any recent decisions.
 
 ## Diagrams
 
 ### Conceptual
-![V1.6 Conceptual](/diagrams/METADATA_MODEL_CONCEPTUAL_1.6.png)
+![Conceptual](metadata_model/images/diagrams/METADATA_MODEL_CONCEPTUAL.png)
 
 ### Logical
-![V1.6 Logical](/diagrams/METADATA_MODEL_LOGICAL_1.6.png)
-
-## Files
-
-Reports and all diagrams are updated for version 1.6.
-Dissemination domain profile documentation is also at 1.6.
-The documentation for the overall model is at 1.5 but is still valid.
+![Logical](metadata_model/images/diagrams/METADATA_MODEL_LOGICAL.png)
 
 ## To do
 
-- Start to firm up the metadata model documentation
-- Start to develop a system for managing lineage ([probably using the provenance ontology and data model](https://www.w3.org/TR/2013/NOTE-prov-overview-20130430/))
-- [SDMx](https://sdmx.org/) is on the horizon...
+- Incorporate any changes required from the Dissemination metadata profile workstream
+- Consider and develop a basic but extensible functionality for risk (using DPV), lineage (Prov) and concept schemes (SKOS)
+- Begin to worry at least a little about microdata, as a treat
 
 ## Contact
 
 Message Samantha Iacob on teams or email [samantha.iacob@ons.gov.uk](mailto:samantha.iacob@ons.gov.uk)
-I am always happy to discuss ways to improve the model (I would like it to be used so it has to work for you!)
+I am always happy to discuss ways to improve the model!
 
-You could also reach out to Kirti Tandel, Hollie Young, Wilfred Inuaghata or Lorraine Crichton for more information. 
