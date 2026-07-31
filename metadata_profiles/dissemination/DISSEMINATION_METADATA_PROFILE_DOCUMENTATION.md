@@ -4,8 +4,8 @@
 - [Governance](#governance)
 - [Model Version Information](#model-version-information)
 - [Purpose](#purpose)
-- [Conceptual metadata model for Dissemination](#conceptual-metadata-model-for-dissemination)
-- [Logical metadata model for Dissemination](#logical-metadata-model-for-dissemination)
+- [Conceptual metadata diagram for Dissemination](#conceptual-metadata-diagram-for-dissemination)
+- [Logical metadata diagram for Dissemination](#logical-metadata-diagram-for-dissemination)
 - [Metadata profile diagram for Dissemination](#metadata-profile-diagram-for-dissemination)
   - [Metadata profile diagram notes](#metadata-profile-diagram-notes)
 - [Instance diagram for typical dataset series and its distributions](#instance-diagram-for-typical-dataset-series-and-its-distributions)
@@ -49,11 +49,11 @@ This document details a metadata profile, a subset of the overall metadata model
 
 Please note that this is still going through an approval process and may change. In future it will be accompanied by a physical model and schema for implementation, guidance relating to the schema and standards that apply for the metadata profile, but for now it should still be of use to anyone trying to understand how the metadata model will apply to the dissemination phase of the statistical production process. Feedback would be very gratefully received.
 
-## Conceptual metadata model for Dissemination
+## Conceptual metadata diagram for Dissemination
 
 ![Conceptual metadata model for Dissemination](images/diagrams/DISSEMINATION_CONCEPTUAL.png)
 
-## Logical metadata model for Dissemination
+## Logical metadata diagram for Dissemination
 
 ![Logical metadata model for Dissemination](images/diagrams/DISSEMINATION_LOGICAL.png)
 
