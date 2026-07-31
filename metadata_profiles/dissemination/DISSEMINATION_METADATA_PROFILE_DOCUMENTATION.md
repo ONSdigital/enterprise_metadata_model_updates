@@ -1,4 +1,4 @@
-# Data Architecture: Dissemination Metadata Profile Documentation
+# Dissemination Metadata Profile Documentation
 
 ## Table of Contents
 - [Governance](#governance)
