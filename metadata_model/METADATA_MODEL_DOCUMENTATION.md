@@ -1,4 +1,4 @@
-# Data Architecture: ONS Metadata Model Documentation
+# ONS Metadata Model Documentation
 
 ## Table of Contents
 - [Governance](#governance)
