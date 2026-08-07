@@ -46,7 +46,7 @@ The Data Architecture Branch in DPSG (Data Products, Services and Governance) ar
 
 This model will also furnish each business area with a tailored subset of those classes and properties where required. This subset, along with other supporting documentation, is known as a *metadata profile*. A metadata profile constrains the model for a specific business purpose and supports technical implementation alongside their associated *profile data standard*.
 
-![Metadata profile relationship overview](images/MODEL-PROFILES.png)
+![Metadata profile relationship overview](images/MODEL_PROFILES.png)
 
 As profiles may "detach" from the model during implementation (for instance the metadata model might progress during development of a solution), work will be needed to ensure that the differences between the evolving metadata model and its profiles are understood so they can be aligned when practicable.  The document focuses primarily on the ONS metadata model - although metadata profiles will be explained briefly here, they will be covered in more detail in their separate future releases.
 
