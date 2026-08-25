@@ -7,7 +7,7 @@ Role,Role Title,"A name given to the role.
 dcterms:title",VARCHAR(100),Not Null
 Role,Role Description,"A free-text account of the distribution.
 
-dcterms:description",VARCHAR(100),Not Null
+dcterms:description",VARCHAR(255),Not Null
 Role,Role Identifier,A simple alphanumeric code representing a distinct role that can be held in relation to a resource.,VARCHAR(10),Not Null
 Role,Agent Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 Role,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
@@ -17,9 +17,6 @@ dcterms:identifier",VARCHAR(40),Not Null
 Related Resource,Related Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
-Related Resource,Related Resource Relationship Type,"The nature of the relationship between the described resource and the referenced resource. Choose from a controlled vocabulary. (this vocabularly isn't established yet)
-
-dcterms:type",VARCHAR(10),Not Null
 Dataset Series,Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
@@ -86,7 +83,7 @@ Distribution,Distribution Replaces Identifier,"The identifier for a related dist
 dcterms:replaces",VARCHAR(40),Null
 Distribution,Distribution Version Notes,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS]. In the distribution's case this explains the reason for the replacement, if a replacement identifier is present.
 
-adms:versionNotes",VARCHAR(100),Not Null
+adms:versionNotes",VARCHAR(255),Not Null
 Distribution,Distribution Language,"The language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
 
 dcterms:language
@@ -187,14 +184,6 @@ dcat:spatialResolutionInMeters
 Definition:	Minimum spatial separation resolvable in a dataset, measured in meters. 
 
 But I've not seen this is in use throughout ONS )",VARCHAR(10),Not Null
-Dataset,Dataset Temporal Coverage Start Date,"The calendar date of the start of this dataset's temporal coverage.
-
-dcat:startDate",DATE,Not Null
-Dataset,Dataset Temporal Coverage End Date,"The calendar date of the end of this dataset's temporal coverage.
-
-dcat:endDate
-
-",DATE,Not Null
 Dataset,Dataset Previous Identifier,"A unique identifier of the previous dataset in the series. Both datasets must have the same In Series Identifier.
 
 dcterms:identifier",VARCHAR(40),Not Null
@@ -208,11 +197,24 @@ Self-defined COGS. Enumerated value. The expected values are accredited-official
 cogs:qualityDesignation",VARCHAR(255),Not Null
 Dataset,Dataset Usage Note,"A note relating to the usage of this dataset or dataset series, including information relating to quirks or known issues with the data.
 
-dcterms:abstract",VARCHAR(100),Not Null
-Dataset,Dataset Temporal Coverage Duration,"The temporal period that the dataset covers.
-Encoded as per duration standard
+dcterms:abstract",VARCHAR(255),Not Null
+Dataset,Dataset License Type,"Reference to the legal document outlining access and usage rights for an information resource. This is intended to be selected from a controlled vocabulary. If an actual legal document needs to be linked to a resource this can be done using the Resource Document class and its type property.
 
-dcat:temporalResolution is close but not quite right. DCAT and other ontologies seem to think that time and duration should belong to its own class. maybe each dataset can have more than one duration in this way. ",VARCHAR(255),Not Null
+URI: dct:license
+
+https://co-cddo.github.io/ukgov-metadata-exchange-model/licence/
+
+",VARCHAR(255),Not Null
+Dataset,Dataset Retention Date,The calendar date at which a dataset is due for a retention review.,DATE,Not Null
+Dataset,Dataset Sensitivity Level,"The sensitivity level of this dataset based on the Sensitivity Assessment. Low, Medium or High. To be reviewed when possible.
+
+
+",VARCHAR(10),Not Null
+Dataset,Dataset Type,"The nature or genre of the dataset.
+
+dcterms:type
+
+This should relate to a controlled vocabulary.",VARCHAR(10),Not Null
 Agent,Agent Identifier,"A unique identifier of the agent.
 
 dcterms:identifier",VARCHAR(40),Not Null
@@ -221,17 +223,6 @@ Agent,Agent Name,"The name of the agent.
 The name of something is a simple textual string.
 
 foaf:name",VARCHAR(200),Not Null
-Agent,Agent Homepage,"A homepage for an agent. The homepage property relates something to a homepage about it.
-
-A 'homepage' in this sense is a public Web document, typically but not necessarily available in HTML format. The page has as a topic the thing whose homepage it is. The homepage is usually controlled, edited or published by the thing whose homepage it is; as such one might look to a homepage for information on its owner from its owner. This works for people, companies, organisations etc.
-
-foaf:homepage
-
-foaf allows multiple homepages. suggesting we capture only the main one, or none at all.
-",VARCHAR(255),Null
-Agent,Agent Contact Name,"The contact name of the agent - to be used when the agent is an organisation. See also Agent name.
-
-foaf:name",VARCHAR(200),Null
 Agent,Agent Email,"The email address as a mailto URI. Used for communication purposes.
 
 vcard:email",VARCHAR(254),Not Null
@@ -246,7 +237,7 @@ Agent,Agent Modified Date,"The calendar date that the agent was last modified in
 dcterms:modified",DATE,Not Null
 Agent,Agent Type,"A simple alphanumeric code representing the type of the agent. 
 
-This could include things like ONS individual, ONS team, UK Govt, Business... anything really. 
+This should be one of the subtypes : person, organisation or software agent.
 
 ",VARCHAR(10),Not Null
 Agent,Role Code,A simple alphanumeric code representing ???,VARCHAR(10),Not Null
@@ -257,7 +248,7 @@ Attribution,Attribution Identifier,"A unique identifier of the association being
 dcterms:identifier",HUGE,Not Null
 Attribution,Resource Identifier,"A unique identifier of the resource being described or catalogued.
 
-dcterms:identifier",VARCHAR(40),Not Null
+dcterms:identifier",VARCHAR(40),Null
 Attribution,Agent Identifier,"A unique identifier of the agent.
 
 dcterms:identifier",VARCHAR(40),Not Null
@@ -266,18 +257,19 @@ Attribution,Role Identifier,"A unique identifier of the role being being attribu
 dcterms:identifier",VARCHAR(10),Not Null
 Attribution,Attribution Start Date,"The calendar date of the start of this attribution's validity.
 
-dcat:startDate",DATE,Not Null
+dcat:startDate",DATE,Null
 Attribution,Attribution End Date,"The calendar date of the end of this attribution's validity.
 
 dcat:endDate
 
-",DATE,Not Null
+",DATE,Null
+Attribution,Category Identifier,A system-assigned unique identifier for the domain to which a dataset can belong.,HUGE,Null
 Data Service,Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
 Data Service,DataService Endpoint Description,"A description of the services available via the end-points, including their operations, parameters etc.
 
-URI: dcat:endpointDescription",VARCHAR(100),Not Null
+URI: dcat:endpointDescription",VARCHAR(255),Not Null
 Data Service,DataService Endpoint URL,"The root location or primary endpoint of the service (a Web-resolvable IRI).
 
 dcat:endpointURL
@@ -309,15 +301,14 @@ Note that this can be an acronym. Example: HESA as an alternative title for High
 URI: dct:alternative",VARCHAR(100),Null
 Resource,Resource Description,"A free-text account of the resource.
 
-dcterms:description",VARCHAR(100),Not Null
+dcterms:description",VARCHAR(255),Not Null
 Resource,Resource Theme,"The main category of the resource. A resource can have multiple themes.
 
 dcat:theme",VARCHAR(10),Not Null
-Resource,Resource Type,"The nature or genre of the resource.
+Resource,Resource Type,"The nature or genre of the resource. This refers to the sub-types available to resource (and its sub-types) only. Ex: dataset, dataset series, data service.
 
 dcterms:type
-
-This should relate to a controlled vocabulary, preferably a public one. DCAT suggests something like the ISO-19115-1 scope codes https://standards.iso.org/iso/19115/resources/Codelists/gml/MD_ScopeCode.xml . This is probably more one for ontology!",VARCHAR(10),Not Null
+",VARCHAR(10),Not Null
 Resource,Resource Created Date,"The date on which the content of a resource is created or compiled.
 
 dcterms:created",DATE,Not Null
@@ -342,7 +333,7 @@ The value of this field should follow the versioning scheme for the data asset. 
 ",VARCHAR(255),Null
 Resource,Resource Version Notes,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS].
 
-adms:versionNotes",VARCHAR(100),Null
+adms:versionNotes",VARCHAR(255),Null
 Resource,Resource Replaces Identifier,"A unique identifier of the resource being described or catalogued.
 
 
@@ -352,25 +343,11 @@ dct:replaces",VARCHAR(40),Null
 Resource,Resource Landing Page URL,"A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.
 
 dcat:landingPage",VARCHAR(255),Null
-Resource,Resource Access Rights,"Details of the rights statement that concerns how the resource is accessed.
+Resource,Resource Access Rights,"Details of the rights statement that concerns how the resource is accessed. Could be a text description of the access rights for a resource. 
 
-URI: dct:accessRights
+URI: dct:accessRights (though this deviates from the standard in terms of range). Access Rights Statements linking to an actual document of rights can be a type of Resource Document if desired.
 
-",VARCHAR(10),Not Null
-Resource,Resource License,"Reference to the legal document outlining access and usage rights for an information resource.
-
-A legal document under which the distribution is made available.
-
-URI: dct:license
-
-https://co-cddo.github.io/ukgov-metadata-exchange-model/licence/
-
-note: This could refer to a code referencing the various licenses or be a URL of the actual document? I think for the start a set of standard codes would be helpful/easiest. DCAT uk guidelines say:
-
-""Rules as per Open Data Policy, all information and data that is made publicly available by HMG is likely to be released under the Open Government licence unless it is exempt under specific conditions. Any other applicable licences should be explicitly stated.""
-
-so unless there's a huge variation of licences could have a list...
-",VARCHAR(10),Not Null
+",VARCHAR(1800),Not Null
 Resource,Resource Has Version Identifier,"Resource identifier
 
 This resource has a more specific, versioned resource [PAV].
@@ -407,7 +384,7 @@ Resource,Resource Brief Description,"A free-text account of the resource.
 
 dcterms:description
 
-This is a concise description with a strict character limit.",VARCHAR(100),Null
+This is a concise description with a strict character limit.",VARCHAR(255),Null
 Resource,Resource Keyword,"Uncontrolled terms (words or phrases) assigned to describe an information resource.
 
 URI: dcat:keyword
@@ -427,11 +404,10 @@ URI: ukgov_metadata:securityClassification
 code list (uk govt security classifications )here: https://www.gov.uk/government/publications/security-policy-framework/hmg-security-policy-framework#information-security",VARCHAR(10),Not Null
 Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 Resource,Related Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Resource,Related Resource Relationship Type,The nature of the relationship between the described resource and the referenced resource. Choose from a controlled vocabulary. (this vocabularly isn't established yet),VARCHAR(10),Not Null
 Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
 Resource,DataService Endpoint Description,"A description of the services available via the end-points, including their operations, parameters etc.
 
-URI: dcat:endpointDescription",VARCHAR(100),Not Null
+URI: dcat:endpointDescription",VARCHAR(255),Not Null
 Resource,DataService Endpoint URL,"The root location or primary endpoint of the service (a Web-resolvable IRI).
 
 dcat:endpointURL
@@ -448,6 +424,13 @@ Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR
 Resource,Resource Conforms To,"An established standard to which the catalogued resource conforms. This will be a URI.
 
 dcterms:conformsTo",VARCHAR(255),Not Null
+Resource,Resource Legal Gateway Type,"Reference to the legal gateways (acts and regulations) under which the data is being shared. This is intended to be selected from a controlled vocabulary. If an act  needs to be linked to a resource this can be done using the Resource Document class and its type property. The legal framework for this model is likely to be improved in future iterations.
+
+URI: dct:license
+
+https://co-cddo.github.io/ukgov-metadata-exchange-model/licence/
+
+",VARCHAR(255),Not Null
 Catalogue Record,Catalogue Record Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
@@ -460,7 +443,7 @@ Catalogue Record,Catalogue Record Modified Timestamp,"Most recent date on which 
 dcterms:modified",TIMESTAMP,Not Null
 Catalogue Record,Catalogue Record Description,"A free-text account of the record.
 
-dcterms:description",VARCHAR(100),Not Null
+dcterms:description",VARCHAR(255),Not Null
 Catalogue Record,Catalogue Record Title,"A name given to the record.
 
 dcterms:title",VARCHAR(100),Not Null
@@ -479,299 +462,49 @@ Frequency,Frequency Description,"The description of the frequency
 
 dcterms:description
 
-note: this should be an enumerated list. Examples here include ""weekly"", ""monthly"", ""annually"" etc.",VARCHAR(100),Not Null
+note: this should be an enumerated list. Examples here include ""weekly"", ""monthly"", ""annually"" etc.",VARCHAR(255),Not Null
 Resource Document,Resource Document Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Resource Document,Resource Document Replaces Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Null
 Resource Document,Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
 Resource Document,Resource Document Landing Page URL,"A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.
 
 dcat:landingPage",VARCHAR(255),Null
-Resource Document,Resource Document Created Date,"The date on which the content of a resource is created or compiled.
-
-dcterms:created",DATE,Not Null
-Resource Document,Resource Document Media Type,"The media type of the distribution as defined by IANA IANA-MEDIA-TYPES.
-
-URI: dcat:mediaType
-
-
-
-Suggested Regex pattern: ^application/\S+|^audio/\S+|^font/\S+|^image/\S+|^message/\S+|^model/\S+|^multipart/\S+|^text/\S+|^video/\S+
-
-Could also be a code list.
-
-See also : https://co-cddo.github.io/ukgov-metadata-exchange-model/mediaType/
-
-https://www.iana.org/assignments/media-types/media-types.xhtml",VARCHAR(255),Null
-Resource Document,Resource Document Language,"The language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
-
-dcterms:language
-
-Usage note:	If representations of a dataset are available for each language separately, define an instance of dcat:Distribution for each language and describe the specific language of each distribution using dcterms:language (i.e., the dataset will have multiple dcterms:language values and each distribution will have just one as the value of its dcterms:language property). In case of multilingual distributions, the distributions will have multiple dcterms:language values.
-
-(datasets can have multiple languages, however each distribution will have only one)
-
-",VARCHAR(10),Not Null
-Resource Document,Resource Document Modified Date,"Most recent date on which the dataset was changed, updated or modified.
-
-dcterms:modified
-
-This relates to the actual dataset, not the catalogue record of the dataset. ",DATE,Not Null
-Resource Document,Resource Document Version,"The version indicator (name or identifier) of a resource.
-
-URI: dcat:version
-
-https://co-cddo.github.io/ukgov-metadata-exchange-model/version/
-
-Guidelines
-The value of this field should follow the versioning scheme for the data asset. This could use semantic version or some date based approach.
-",VARCHAR(255),Null
-Resource Document,Resource Document Version Notes,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS].
-
-adms:versionNotes",VARCHAR(100),Null
 Resource Document,Resource Document Title,"A name given to the dataset series
 
 dcterms:title",VARCHAR(100),Not Null
 Resource Document,Resource Document Description,"A free-text account of the resource.
 
-dcterms:description",VARCHAR(100),Not Null
+dcterms:description",VARCHAR(255),Not Null
 Resource Document,Resource Document Type,"The nature or genre of the resource.
 
 dcterms:type
 
 This should relate to a controlled vocabulary, preferably a public one. DCAT suggests something like the ISO-19115-1 scope codes https://standards.iso.org/iso/19115/resources/Codelists/gml/MD_ScopeCode.xml . This is probably more one for ontology!",VARCHAR(10),Not Null
-Resource Document,Resource Document Creator,"A unique identifier of the agent.
+Resource Document,Resource Document Valid From Date,The calendar date that ...,DATE,Not Null
+Resource Document,Resource Document Valid To Date,The calendar date that ...,DATE,Not Null
+Activity,Activity Identifier,"A unique identifier of the activity being described or cataloged.
+
+dcterms:identifier",HUGE,Not Null
+Activity,Activity Type,"The nature or genre of the activity. Should be a controlled vocabulary.
+
+DCMI:type",VARCHAR(100),Not Null
+Activity,Activity Start Timestamp,"The date and time at which an activity started
+
+prov:startedAtTime
+",TIMESTAMP,Not Null
+Activity,Activity End Timestamp,"The date and time at which an activity ended
+
+prov:endedAtTime
+",TIMESTAMP,Not Null
+Person,Agent Identifier,"A unique identifier of the agent.
 
 dcterms:identifier",VARCHAR(40),Not Null
-Resource Document,Resource Document Access Rights,"Details of the rights statement that concerns how the resource is accessed.
-
-URI: dct:accessRights
-
-",VARCHAR(10),Not Null
-Role,Role Identifier,"A unique identifier of the role.
-
-dcterms:identifier",VARCHAR(10),Not Null
-Role,Role Title,"A name given to the role.
-
-dcterms:title",VARCHAR(100),Not Null
-Role,Role Description,"A free-text account of the distribution.
-
-dcterms:description",VARCHAR(100),Not Null
-Role,Role Identifier,A simple alphanumeric code representing a distinct role that can be held in relation to a resource.,VARCHAR(10),Not Null
-Role,Agent Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Role,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Related Resource,Resource Identifier,"A unique identifier of the resource being described or cataloged.
+Person,Person Job Title,"The job title of a person, where known and relevant.",VARCHAR(255),Not Null
+Organisation,Agent Identifier,"A unique identifier of the agent.
 
 dcterms:identifier",VARCHAR(40),Not Null
-Related Resource,Related Resource Identifier,"A unique identifier of the resource being described or cataloged.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Related Resource,Related Resource Relationship Type,"The nature of the relationship between the described resource and the referenced resource. Choose from a controlled vocabulary. (this vocabularly isn't established yet)
-
-dcterms:type",VARCHAR(10),Not Null
-Dataset Series,Resource Identifier,"A unique identifier of the resource being described or cataloged.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Dataset Series,Dataset Series First Identifier,"The identifier of the first resource in an ordered collection or series of resources, to which the current resource belongs.
-
-dcat:first",VARCHAR(40),Not Null
-Dataset Series,Dataset Series Last Identifier,"The identifier of the last resource in an ordered collection or series of resources, to which the current resource belongs.
-
-dcat: last",VARCHAR(40),Not Null
-Dataset Series,Dataset Series Next Issued Date,"The date on which the next iteration of this dataset (or the next dataset in the series)  is expected to be published or otherwise made publicly available for the first time.
-
-dcterms:available
-",DATE,Null
-Dataset Series,Dataset Series Next Created Date,"The date on which the content of the next iteration of this dataset (or the next dataset in the series)  is expected to be created or compiled. For instance, the date when the next scheduled delivery of a dataset is expected from a supplier. 
-
-dcterms:available
-",DATE,Null
-Dataset Series,Dataset Series Next Release Status,"The status of the resource in the context of a particular workflow process [VOCAB-ADMS].
-
-The status of the next release in this dataset series.
-
-adms:status
-
-",VARCHAR(10),Not Null
-Distribution,Distribution Identifier,A system-assigned unique identifier for the specific distribution,VARCHAR(40),Not Null
-Distribution,Distribution Media Type,"The media type of the distribution as defined by IANA IANA-MEDIA-TYPES.
-
-URI: dcat:mediaType
-
-https://www.iana.org/assignments/media-types/media-types.xhtml",VARCHAR(255),Null
-Distribution,Distribution Format,"The file format of the distribution. Not to be used if the type of the distribution is defined by IANA - if media type is filled out then format isn't needed.
-
-This could potentially be a string.
-
-dcterms:format",VARCHAR(10),Null
-Distribution,Distribution Title,"The full and formal name given to an information resource.
-
-A name given to the distribution.
-
-URI: dct:title
-
-https://co-cddo.github.io/ukgov-metadata-exchange-model/title/
-Ex: Distribution-os-postcodes-geopackage-distribution
-Distribution-os-postcodes-excel-distribution-minimal
-Distribution-os-postcodes-csv-distribution",VARCHAR(100),Not Null
-Distribution,Distribution Download URL,"The electronic location where the item (file) being described can be found.
-
-The URL of the downloadable file in a given format. E.g., CSV file or RDF file. The format is indicated by the distribution's dcterms:format and/or dcat:mediaType.
-
-URI: dcat:downloadURL
-
-dcat:downloadURL SHOULD be used for the URL at which this distribution is available directly, typically through a HTTP Get request.
-
-https://co-cddo.github.io/ukgov-metadata-exchange-model/downloadURL/",VARCHAR(255),Not Null
-Distribution,Distribution Byte Size,"The filesize of the item (file) being described.
-
-The size of the distribution in bytes.
-
-URI: dcat:byteSize
-
-http://co-cddo.github.io/ukgov-metadata-exchange-model/byteSize/",INTEGER,Not Null
-Distribution,Distribution Replaces Identifier,"The identifier for a related distribution that is supplanted, displaced, or superseded by the described distribution
-
-dcterms:replaces",VARCHAR(40),Null
-Distribution,Distribution Version Notes,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS]. In the distribution's case this explains the reason for the replacement, if a replacement identifier is present.
-
-adms:versionNotes",VARCHAR(100),Not Null
-Distribution,Distribution Language,"The language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
-
-dcterms:language
-
-Usage note:	If representations of a dataset are available for each language separately, define an instance of dcat:Distribution for each language and describe the specific language of each distribution using dcterms:language (i.e., the dataset will have multiple dcterms:language values and each distribution will have just one as the value of its dcterms:language property). In case of multilingual distributions, the distributions will have multiple dcterms:language values.
-
-(datasets can have multiple languages, however each distribution will have only one)
-
-",VARCHAR(10),Not Null
-Distribution,Distribution Release Date,"The date on which an information resource was originally published or otherwise made publicly available for the first time.
-
-dcterms:issued
-
-see also : https://co-cddo.github.io/ukgov-metadata-exchange-model/issued/",DATE,Not Null
-Distribution,Distribution Created Date,"The date on which the content of a dataset is created or compiled.
-
-dcterms:created",DATE,Not Null
-Distribution,Distribution Status,"The status of the resource in the context of a particular workflow process [VOCAB-ADMS].
-
-I envison this as a lifecycle status code which can be used to indicate the ""currency"" of a distribution.
-
-adms:status
-
-Examples of life-cycle statuses include:
-
-Those defined in the ISO standard for item registration [ISO-19135] (accepted / not accepted, deprecated, experimental, reserved, retired, stable, submitted, superseded, valid / invalid).
-The progress codes defined in [ISO-19115] (accepted, completed, deprecated, final, historical archive, not accepted, obsolete, ongoing, pending, planned, proposed, required, retired, superseded, tentative, under development, valid, withdrawn).
-The ADMS Status vocabulary [ADMS-SKOS], used in [DCAT-AP], which includes four statuses: completed, deprecated, under development, and withdrawn.
-The dataset statuses [EUV-DS] and concept statuses [EUV-CS] vocabularies from the EU Vocabularies registry.
-The UK Government Linked Data Registry project [UKGOVLD-REG] provides an example of how the life-cycle statuses defined in [ISO-19135] can be used in a registry, along with the criteria for status transition.",VARCHAR(10),Not Null
-Distribution,Distribution Access Rights,"The rights statement that concerns how the distribution is accessed.
-
-URI: dct:accessRights
-
-This could be a code that indicates whether the data is openly availalble, limited to internal access, or further limited to permissions groups. I will need support defining this further. - Sam",VARCHAR(10),Not Null
-Distribution,Distribution Licence,"Reference to the legal document outlining access and usage rights for an information resource.
-
-A legal document under which the distribution is made available.
-
-URI: dct:license
-
-https://co-cddo.github.io/ukgov-metadata-exchange-model/licence/
-
-note: This could refer to a code referencing the various licenses or be a URL of the actual document? I think for the start a set of standard codes would be helpful/easiest. DCAT uk guidelines say:
-
-""Rules as per Open Data Policy, all information and data that is made publicly available by HMG is likely to be released under the Open Government licence unless it is exempt under specific conditions. Any other applicable licences should be explicitly stated.""
-
-so unless there's a huge variation of licences could have a list...
-",VARCHAR(10),Not Null
-Distribution,Distribution Security Classification,"The information security designation that identifies the minimum level of protection assigned to an information resource.
-
-URI: ukgov_metadata:securityClassification
-
-code list (uk govt security classifications )here: https://www.gov.uk/government/publications/security-policy-framework/hmg-security-policy-framework#information-security",VARCHAR(10),Not Null
-Distribution,Distribution Access URL,"A URL of the resource that gives access to a distribution of the dataset. E.g., landing page, feed, SPARQL endpoint.
-
-dcat:accessURL
-
-dcat:accessURL SHOULD be used for the URL of a service or location that can provide access to this distribution, typically through a Web form, query or API call.
-
-dcat:downloadURL is preferred for direct links to downloadable resources.
-
-If the distribution(s) are accessible only through a landing page (i.e., direct download URLs are not known), then the landing page URL associated with the dcat:Dataset SHOULD be duplicated as access URL on a distribution (see 5.7 Dataset available only behind some Web page).",VARCHAR(255),Null
-Distribution,Resource Identifier,"A unique identifier of the resource being described or catalogued.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Distribution,Distribution Access Service Identifier,"A unique identifier of the data service.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Distribution,Distribution Modified Date,"The recent date on which the distribution was changed, updated or modified.
-
-dcterms:modified
-
-This relates to the actual distribution not the catalogue record of the dataset",DATE,Not Null
-Distribution,Distribution Conforms To,"An established standard to which the distribution conforms. This will be a URI.
-
-dcterms:conformsTo",VARCHAR(255),Not Null
-Dataset-Data Service Access,Dataset-Data Service Access Identifier,"A unique identifier of the instance of dataset-dateservice access.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Dataset-Data Service Access,Resource Identifier,"A unique identifier of the resource being described or cataloged.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Dataset-Data Service Access,Data Service Identifier,"A unique identifier of the data service being described or cataloged.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Dataset,Resource Identifier,"A unique identifier of the resource being described or cataloged.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Dataset,Dataset Geographical Coverage,"The spatial/geographical area covered by the dataset.
-
-dcterms:spatial",VARCHAR(10),Not Null
-Dataset,Dataset Spatial Resolution,"A simple alphanumeric code representing the lowest level of geography covered by this dataset.
-
-(in DCAT this is 
-
-dcat:spatialResolutionInMeters
-Definition:	Minimum spatial separation resolvable in a dataset, measured in meters. 
-
-But I've not seen this is in use throughout ONS )",VARCHAR(10),Not Null
-Dataset,Dataset Temporal Coverage Start Date,"The calendar date of the start of this dataset's temporal coverage.
-
-dcat:startDate",DATE,Not Null
-Dataset,Dataset Temporal Coverage End Date,"The calendar date of the end of this dataset's temporal coverage.
-
-dcat:endDate
-
-",DATE,Not Null
-Dataset,Dataset Previous Identifier,"A unique identifier of the previous dataset in the series. Both datasets must have the same In Series Identifier.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Dataset,Dataset In Series Identifier,"A unique identifier of the dataset series to which this dataset belongs.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Dataset,Dataset Quality Designation,"Represents the official status of the statistic, and the values come from the controlled list defined by the Code of Practice. 
-
-Self-defined COGS. Enumerated value. The expected values are accredited-official, official, and official-in-development.
-
-cogs:qualityDesignation",VARCHAR(255),Not Null
-Dataset,Dataset Usage Note,"A note relating to the usage of this dataset or dataset series, including information relating to quirks or known issues with the data.
-
-dcterms:abstract",VARCHAR(100),Not Null
-Dataset,Dataset Temporal Coverage Duration,"The temporal period that the dataset covers.
-Encoded as per duration standard
-
-dcat:temporalResolution is close but not quite right. DCAT and other ontologies seem to think that time and duration should belong to its own class. maybe each dataset can have more than one duration in this way. ",VARCHAR(255),Not Null
-Agent,Agent Identifier,"A unique identifier of the agent.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Agent,Agent Name,"The name of the agent.
-
-The name of something is a simple textual string.
-
-foaf:name",VARCHAR(200),Not Null
-Agent,Agent Homepage,"A homepage for an agent. The homepage property relates something to a homepage about it.
+Organisation,Organisation Homepage URL,"A homepage for an agent. The homepage property relates something to a homepage about it.
 
 A 'homepage' in this sense is a public Web document, typically but not necessarily available in HTML format. The page has as a topic the thing whose homepage it is. The homepage is usually controlled, edited or published by the thing whose homepage it is; as such one might look to a homepage for information on its owner from its owner. This works for people, companies, organisations etc.
 
@@ -779,782 +512,42 @@ foaf:homepage
 
 foaf allows multiple homepages. suggesting we capture only the main one, or none at all.
 ",VARCHAR(255),Null
-Agent,Agent Contact Name,"The contact name of the agent - to be used when the agent is an organisation. See also Agent name.
+Organisation,Organisation Contact Name,"The name of a person who is a contact at an organisation. See also Agent name.
 
 foaf:name",VARCHAR(200),Null
-Agent,Agent Email,"The email address as a mailto URI. Used for communication purposes.
+Software Agent,Agent Identifier,"A unique identifier of the agent.
 
-vcard:email",VARCHAR(254),Not Null
-Agent,Agent Telephone,"The landline or mobile phone number for the agent.
+dcterms:identifier",VARCHAR(40),Not Null
+Category,Category Identifier,A system-assigned unique identifier for the domain to which a dataset can belong.,HUGE,Not Null
+Category,Category Name,The name of the domain.,VARCHAR(100),Not Null
+Category,Category Description,A short description of the domain. Optional if the domain is attached to a concept scheme and the concept scheme URI links to a document with a full description.,VARCHAR(255),Null
+Category,Concept Scheme Identifier,A system-assigned unique identifier for a concept scheme.,HUGE,Not Null
+Concept Scheme,Concept Scheme Identifier,A system-assigned unique identifier for a concept scheme.,HUGE,Not Null
+Concept Scheme,Concept Scheme Name,The name of the concept scheme (ie domain and subdomain taxonomy),VARCHAR(100),Not Null
+Concept Scheme,Concept Scheme URI,The URI for the location where further information about the concept scheme is held.,VARCHAR(100),Not Null
+Period of Time,Period of Time Identifier,A system-assigned unique identifier for the period of time.,HUGE,Not Null
+Period of Time,Period of Time Type,"The nature or genre of the time period.
 
-vcard:tel",VARCHAR(20),Null
-Agent,Agent Created Date,"The calendar date that this agent was created (in the catalogue)
+dcterms:type
 
-dcterms:created",DATE,Not Null
-Agent,Agent Modified Date,"The calendar date that the agent was last modified in the catalogue.
+For instance : availability, coverage",VARCHAR(10),Not Null
+Period of Time,Period of Time Start Timestamp,"The start of the period.
 
-dcterms:modified",DATE,Not Null
-Agent,Agent Type,"A simple alphanumeric code representing the type of the agent. 
+dcat:startDate",TIMESTAMP,Not Null
+Period of Time,Period of Time End Timestamp,"The end of the period.
 
-This could include things like ONS individual, ONS team, UK Govt, Business... anything really. 
+dcat:endDate",TIMESTAMP,Not Null
+Period of Time,Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
-",VARCHAR(10),Not Null
-Agent,Role Code,A simple alphanumeric code representing ???,VARCHAR(10),Not Null
-Agent,Agent Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Agent,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Attribution,Attribution Identifier,"A unique identifier of the association being described or cataloged.
+dcterms:identifier",VARCHAR(40),Not Null
+Period of Time,Period of Time Duration,"The amount of time this period covers encoded as per ONS duration standard
+. ",VARCHAR(255),Not Null
+External Key,External Key Identifier,"A system-assigned unique identifier for the external key and its relation to the resource.
 
 dcterms:identifier",HUGE,Not Null
-Attribution,Resource Identifier,"A unique identifier of the resource being described or catalogued.
+External Key,Resource Identifier,"A unique identifier of the resource being described or cataloged.
 
 dcterms:identifier",VARCHAR(40),Not Null
-Attribution,Agent Identifier,"A unique identifier of the agent.
+External Key,External Key Type,"A string or short code identifying the catalogue, registry, library or other system that this identifier belongs to. Should be a controlled vocabulary.
 
-dcterms:identifier",VARCHAR(40),Not Null
-Attribution,Role Identifier,"A unique identifier of the role being being attributed. 
-
-dcterms:identifier",VARCHAR(10),Not Null
-Attribution,Attribution Start Date,"The calendar date of the start of this attribution's validity.
-
-dcat:startDate",DATE,Not Null
-Attribution,Attribution End Date,"The calendar date of the end of this attribution's validity.
-
-dcat:endDate
-
-",DATE,Not Null
-Data Service,Resource Identifier,"A unique identifier of the resource being described or cataloged.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Data Service,DataService Endpoint Description,"A description of the services available via the end-points, including their operations, parameters etc.
-
-URI: dcat:endpointDescription",VARCHAR(100),Not Null
-Data Service,DataService Endpoint URL,"The root location or primary endpoint of the service (a Web-resolvable IRI).
-
-dcat:endpointURL
-
-
-https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_endpoint_url
-
-See also https://co-cddo.github.io/ukgov-metadata-exchange-model/endpointURL/ with definition: ""The electronic location where the item (file) being described can be found. Note that there could be a security risk in sharing the endpoint URL for internal services, e.g. hackers can target the endpoint if they become aware of it.""
-
-",VARCHAR(255),Not Null
-Checksum,Distribution Identifier,A system-assigned unique identifier for the specific distribution,VARCHAR(40),Not Null
-Checksum,Checksum Algorithm,"A simple alphanumeric code representing the algorithm used to produce the subject Checksum [SPDX].
-
-spdx:algorithm
-
-Version 2.2 of [SPDX] defines individuals for the following algorithms: MD2, MD4, MD5, MD6, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 - do we have a similar list?",VARCHAR(10),Not Null
-Checksum,Checksum,"The checksumValue property provides a lowercase hexadecimal encoded digest value produced using a specific algorithm [SPDX].
-
-spdx:checksumValue",NUMBER,Not Null
-Resource,Resource Identifier,"A unique identifier of the resource being described or cataloged.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Resource,Resource Title,"A name given to the dataset series
-
-dcterms:title",VARCHAR(100),Not Null
-Resource,Resource Alternative Title,"An alternative name used as a substitute or additional access point for an information resource.
-
-Note that this can be an acronym. Example: HESA as an alternative title for Higher Education Statistics Agency [dataset]
-URI: dct:alternative",VARCHAR(100),Null
-Resource,Resource Description,"A free-text account of the resource.
-
-dcterms:description",VARCHAR(100),Not Null
-Resource,Resource Theme,"The main category of the resource. A resource can have multiple themes.
-
-dcat:theme",VARCHAR(10),Not Null
-Resource,Resource Type,"The nature or genre of the resource.
-
-dcterms:type
-
-This should relate to a controlled vocabulary, preferably a public one. DCAT suggests something like the ISO-19115-1 scope codes https://standards.iso.org/iso/19115/resources/Codelists/gml/MD_ScopeCode.xml . This is probably more one for ontology!",VARCHAR(10),Not Null
-Resource,Resource Created Date,"The date on which the content of a resource is created or compiled.
-
-dcterms:created",DATE,Not Null
-Resource,Resource Issued Date,"The date on which an information resource was originally published or otherwise made publicly available for the first time.
-
-dcterms:issued
-
-see also : https://co-cddo.github.io/ukgov-metadata-exchange-model/issued/",DATE,Null
-Resource,Resource Modified Date,"Most recent date on which the dataset was changed, updated or modified.
-
-dcterms:modified
-
-This relates to the actual dataset, not the catalogue record of the dataset. ",DATE,Not Null
-Resource,Resource Version,"The version indicator (name or identifier) of a resource.
-
-URI: dcat:version
-
-https://co-cddo.github.io/ukgov-metadata-exchange-model/version/
-
-Guidelines
-The value of this field should follow the versioning scheme for the data asset. This could use semantic version or some date based approach.
-",VARCHAR(255),Null
-Resource,Resource Version Notes,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS].
-
-adms:versionNotes",VARCHAR(100),Null
-Resource,Resource Replaces Identifier,"A unique identifier of the resource being described or catalogued.
-
-
-http://purl.org/dc/terms/replaces
-
-dct:replaces",VARCHAR(40),Null
-Resource,Resource Landing Page URL,"A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.
-
-dcat:landingPage",VARCHAR(255),Null
-Resource,Resource Access Rights,"Details of the rights statement that concerns how the resource is accessed.
-
-URI: dct:accessRights
-
-",VARCHAR(10),Not Null
-Resource,Resource License,"Reference to the legal document outlining access and usage rights for an information resource.
-
-A legal document under which the distribution is made available.
-
-URI: dct:license
-
-https://co-cddo.github.io/ukgov-metadata-exchange-model/licence/
-
-note: This could refer to a code referencing the various licenses or be a URL of the actual document? I think for the start a set of standard codes would be helpful/easiest. DCAT uk guidelines say:
-
-""Rules as per Open Data Policy, all information and data that is made publicly available by HMG is likely to be released under the Open Government licence unless it is exempt under specific conditions. Any other applicable licences should be explicitly stated.""
-
-so unless there's a huge variation of licences could have a list...
-",VARCHAR(10),Not Null
-Resource,Resource Has Version Identifier,"Resource identifier
-
-This resource has a more specific, versioned resource [PAV].
-
-dcat:hasVersion
-
-This is expected to be an array containing the identifiers of every version of the dataset.",VARCHAR(40),Null
-Resource,Resource Status,"The status of the resource in the context of a particular workflow process [VOCAB-ADMS].
-
-I envison this as a lifecycle status code which can be used to indicate the ""currency"" of a distribution.
-
-adms:status
-
-Examples of life-cycle statuses include:
-
-Those defined in the ISO standard for item registration [ISO-19135] (accepted / not accepted, deprecated, experimental, reserved, retired, stable, submitted, superseded, valid / invalid).
-The progress codes defined in [ISO-19115] (accepted, completed, deprecated, final, historical archive, not accepted, obsolete, ongoing, pending, planned, proposed, required, retired, superseded, tentative, under development, valid, withdrawn).
-The ADMS Status vocabulary [ADMS-SKOS], used in [DCAT-AP], which includes four statuses: completed, deprecated, under development, and withdrawn.
-The dataset statuses [EUV-DS] and concept statuses [EUV-CS] vocabularies from the EU Vocabularies registry.
-The UK Government Linked Data Registry project [UKGOVLD-REG] provides an example of how the life-cycle statuses defined in [ISO-19135] can be used in a registry, along with the criteria for status transition.",VARCHAR(10),Not Null
-Resource,Resource Language,"The language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
-
-dcterms:language
-
-Usage note:	If representations of a dataset are available for each language separately, define an instance of dcat:Distribution for each language and describe the specific language of each distribution using dcterms:language (i.e., the dataset will have multiple dcterms:language values and each distribution will have just one as the value of its dcterms:language property). In case of multilingual distributions, the distributions will have multiple dcterms:language values.
-
-(datasets can have multiple languages, however each distribution will have only one)
-
-",VARCHAR(10),Not Null
-Resource,Resource Previous Version Identifier,"A unique identifier of the resource being described or catalogued.
-
-dcterms:identifier",VARCHAR(40),Null
-Resource,Resource Brief Description,"A free-text account of the resource.
-
-dcterms:description
-
-This is a concise description with a strict character limit.",VARCHAR(100),Null
-Resource,Resource Keyword,"Uncontrolled terms (words or phrases) assigned to describe an information resource.
-
-URI: dcat:keyword
-
-https://co-cddo.github.io/ukgov-metadata-exchange-model/keyword/
-
-Usage Notes
-Purpose
-Keywords can serve as additional access points to assist discovery and retrieval.",VARCHAR(255),Null
-Resource,Resource Current Version Identifier,"This resource has a more specific, versioned resource with equivalent content [PAV]. The identifier of that resource.
-
-dcat:hasCurrentVersion",VARCHAR(40),Null
-Resource,Resource Security Classification,"An information security designation that identifies the minimum level of protection assigned to an information resource.
-
-URI: ukgov_metadata:securityClassification
-
-code list (uk govt security classifications )here: https://www.gov.uk/government/publications/security-policy-framework/hmg-security-policy-framework#information-security",VARCHAR(10),Not Null
-Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Resource,Related Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Resource,Related Resource Relationship Type,The nature of the relationship between the described resource and the referenced resource. Choose from a controlled vocabulary. (this vocabularly isn't established yet),VARCHAR(10),Not Null
-Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Resource,DataService Endpoint Description,"A description of the services available via the end-points, including their operations, parameters etc.
-
-URI: dcat:endpointDescription",VARCHAR(100),Not Null
-Resource,DataService Endpoint URL,"The root location or primary endpoint of the service (a Web-resolvable IRI).
-
-dcat:endpointURL
-
-
-https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_endpoint_url
-
-See also https://co-cddo.github.io/ukgov-metadata-exchange-model/endpointURL/ with definition: ""The electronic location where the item (file) being described can be found. Note that there could be a security risk in sharing the endpoint URL for internal services, e.g. hackers can target the endpoint if they become aware of it.""
-
-",VARCHAR(255),Not Null
-Resource,Role,A simple alphanumeric code representing ???,VARCHAR(10),Not Null
-Resource,Agent Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Resource,Resource Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Resource,Resource Conforms To,"An established standard to which the catalogued resource conforms. This will be a URI.
-
-dcterms:conformsTo",VARCHAR(255),Not Null
-Frequency,Frequency Identifier,"A unique identifier of the literal being described or catalogued.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Frequency,Resource Identifier,"A unique identifier of the resource being described or cataloged.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Frequency,Frequency Type,"The nature or genre of the frequency.
-
-dcterms:type
-
-For instance : publication, ingest...",VARCHAR(10),Not Null
-Frequency,Frequency Description,"The description of the frequency
-
-dcterms:description
-
-note: this should be an enumerated list. Examples here include ""weekly"", ""monthly"", ""annually"" etc.",VARCHAR(100),Not Null
-Resource Document,Resource Document Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Not Null
-Resource Document,Resource Document Replaces Identifier,A system-assigned unique identifier for ???,VARCHAR(40),Null
-Resource Document,Resource Identifier,"A unique identifier of the resource being described or cataloged.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Resource Document,Resource Document Landing Page URL,"A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.
-
-dcat:landingPage",VARCHAR(255),Null
-Resource Document,Resource Document Created Date,"The date on which the content of a resource is created or compiled.
-
-dcterms:created",DATE,Not Null
-Resource Document,Resource Document Media Type,"The media type of the distribution as defined by IANA IANA-MEDIA-TYPES.
-
-URI: dcat:mediaType
-
-
-
-Suggested Regex pattern: ^application/\S+|^audio/\S+|^font/\S+|^image/\S+|^message/\S+|^model/\S+|^multipart/\S+|^text/\S+|^video/\S+
-
-Could also be a code list.
-
-See also : https://co-cddo.github.io/ukgov-metadata-exchange-model/mediaType/
-
-https://www.iana.org/assignments/media-types/media-types.xhtml",VARCHAR(255),Null
-Resource Document,Resource Document Language,"The language of the resource. This refers to the natural language used for textual metadata (i.e., titles, descriptions, etc.) of a cataloged resource (i.e., dataset or service) or the textual values of a dataset distribution.
-
-dcterms:language
-
-Usage note:	If representations of a dataset are available for each language separately, define an instance of dcat:Distribution for each language and describe the specific language of each distribution using dcterms:language (i.e., the dataset will have multiple dcterms:language values and each distribution will have just one as the value of its dcterms:language property). In case of multilingual distributions, the distributions will have multiple dcterms:language values.
-
-(datasets can have multiple languages, however each distribution will have only one)
-
-",VARCHAR(10),Not Null
-Resource Document,Resource Document Modified Date,"Most recent date on which the dataset was changed, updated or modified.
-
-dcterms:modified
-
-This relates to the actual dataset, not the catalogue record of the dataset. ",DATE,Not Null
-Resource Document,Resource Document Version,"The version indicator (name or identifier) of a resource.
-
-URI: dcat:version
-
-https://co-cddo.github.io/ukgov-metadata-exchange-model/version/
-
-Guidelines
-The value of this field should follow the versioning scheme for the data asset. This could use semantic version or some date based approach.
-",VARCHAR(255),Null
-Resource Document,Resource Document Version Notes,"A description of changes between this version and the previous version of the resource [VOCAB-ADMS].
-
-adms:versionNotes",VARCHAR(100),Null
-Resource Document,Resource Document Title,"A name given to the dataset series
-
-dcterms:title",VARCHAR(100),Not Null
-Resource Document,Resource Document Description,"A free-text account of the resource.
-
-dcterms:description",VARCHAR(100),Not Null
-Resource Document,Resource Document Type,"The nature or genre of the resource.
-
-dcterms:type
-
-This should relate to a controlled vocabulary, preferably a public one. DCAT suggests something like the ISO-19115-1 scope codes https://standards.iso.org/iso/19115/resources/Codelists/gml/MD_ScopeCode.xml . This is probably more one for ontology!",VARCHAR(10),Not Null
-Resource Document,Resource Document Creator,"A unique identifier of the agent.
-
-dcterms:identifier",VARCHAR(40),Not Null
-Resource Document,Resource Document Access Rights,"Details of the rights statement that concerns how the resource is accessed.
-
-URI: dct:accessRights
-
-",VARCHAR(10),Not Null
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
+",VARCHAR(20),Not Null

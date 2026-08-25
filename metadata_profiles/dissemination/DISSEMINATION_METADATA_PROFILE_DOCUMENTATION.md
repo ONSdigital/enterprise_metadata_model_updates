@@ -4,10 +4,8 @@
 - [Governance](#governance)
 - [Model Version Information](#model-version-information)
 - [Purpose](#purpose)
-- [Conceptual metadata diagram for Dissemination](#conceptual-metadata-diagram-for-dissemination)
-- [Logical metadata diagram for Dissemination](#logical-metadata-diagram-for-dissemination)
-- [Metadata profile diagram for Dissemination](#metadata-profile-diagram-for-dissemination)
-  - [Metadata profile diagram notes](#metadata-profile-diagram-notes)
+- [Conceptual metadata model for Dissemination](#conceptual-metadata-model-for-dissemination)
+- [Logical metadata model for Dissemination](#logical-metadata-model-for-dissemination)
 - [Instance diagram for typical dataset series and its distributions](#instance-diagram-for-typical-dataset-series-and-its-distributions)
   - [Instance diagram notes](#instance-diagram-notes)
 - [Metadata fields and language](#metadata-fields-and-language)
@@ -36,18 +34,17 @@
 
 | Approver | Role | Business Area | Date Approved |
 |----|----|----|----|
-| Charles Baird | Deputy Director | Data Growth and Operations – Data Architecture, Location and Indexing |  |
-| Kirti Tandel | Lead Data Architect | Data Growth and Operations – Data Architecture, Location and Indexing |  |
+| Charles Baird | Deputy Director | Data Growth and Operations – Data Architecture, Location and Indexing | 2026-06-18 |
+| Kirti Tandel | Lead Data Architect | Data Growth and Operations – Data Architecture, Location and Indexing | 2026-06-18 |
 
 ## Model Version Information
 
-This document is currently based on the ONS Metadata Model version 1.7 (released 31 July 2026). 
+This document and its illustrations are based on the ONS Metadata Model release of 25 August 2026.
 
 ## Purpose
 
-This document details a metadata profile, a subset of the overall metadata model tailored for a particular part of the statistical production process. As such it doesn’t discuss the model more generally or go into detail on areas which are common to all parts of the business (such as versioning using the model, how agents, roles and attributions work or what the major classes are). It also doesn’t have any detail on concepts such as modelling levels or what a metadata profile *is.* It’s recommended that you first read the *Metadata Model Documentation* which is available in the [GitHub repository](documents/METADATA_MODEL_DOCUMENTATION.md).
+This document details a metadata profile, a subset of the overall metadata model tailored for a particular part of the statistical production process. As such it doesn’t discuss the model more generally or go into detail on areas which are common to all parts of the business (such as versioning using the model, how agents, roles and attributions work or what the major classes are). It also doesn’t have any detail on concepts such as modelling levels or what a metadata profile *is.* It’s recommended that you first read the *Metadata Model Documentation* which is available in the [GitHub repository](https://github.com/ONSdigital/enterprise_metadata_model_updates/blob/main/metadata_model/METADATA_MODEL_DOCUMENTATION.md).
 
-Please note that this is still going through an approval process and may change. In future it will be accompanied by a physical model and schema for implementation, guidance relating to the schema and standards that apply for the metadata profile, but for now it should still be of use to anyone trying to understand how the metadata model will apply to the dissemination phase of the statistical production process. Feedback would be very gratefully received.
 
 ## Conceptual metadata diagram for Dissemination
 
@@ -58,16 +55,6 @@ Please note that this is still going through an approval process and may change.
 ![Logical metadata model for Dissemination](images/diagrams/DISSEMINATION_LOGICAL.png)
 
 Please note that these diagrams show all the classes and properties that are *available* to the dissemination profile from the metadata model - you may not need to use all the properties.
-
-## Metadata profile diagram for Dissemination
-
-![Metadata profile diagram for Dissemination](images/diagrams/DISSEMINATION_PROFILE.png)
-
-### Metadata profile diagram notes
-
-The diagram shows a entity-relationship diagram model which shows how the classes and properties introduced in the previous diagrams would be used in the dissemination context. A further step is required for implementation from here - a physical model and schema, which may entail changing the property names or where they appear in the model to meet the specific requirements of the system it is implemented in.
-
-The asterisk before the entity names in the diagram is due to a limitation in the data modelling software and can be ignored.
 
 ## Instance diagram for typical dataset series and its distributions
 
@@ -103,11 +90,7 @@ A possible exception may be for ad hoc datasets (including user-requested data).
 
 ### Themes
 
-In this model *Resource Theme* combines the concepts of Theme and Topic. As a topic can have only one parent theme, this means that a parent theme can be derived from a topic.
-
-This means that for this profile *Resource Theme* can be entered as an array, with the primary theme and/or topic being the first entry in the array.
-
-It’s noted that Digital Publishing wants editorial control of the theme and topic ontology and work needs to be done to manage the source of truth here.
+Themes are managed by governance classes which describe categories, taxonomies and ownership. Please refer to the [Metadata Model Documentation](https://github.com/ONSdigital/enterprise_metadata_model_updates/blob/main/metadata_model/METADATA_MODEL_DOCUMENTATION.md) for more detail about this. As Dissemination doesn't require roles or actors to be associated with themes it is not necessary to use all the classes available in the governance layer of the model so not all of them have been represented on the Dissemination logical diagram.
 
 ### Dates
 
@@ -115,11 +98,11 @@ Datasets have access to three dates - *Created, Issued* and *Modified Dates.* Fo
 
 ### Frequency and Releases
 
-This should be found at the Dataset Series level. Although more than one Frequency is possible, the Frequency required by Dissemination is the publication frequency. Dataset Series also contains a property called *Dataset Series Next Issued Date* which is the projected date of the next publication in a series, and *Dataset Series Next Release Status* which gives further details. These are both optional.
+This class should be associated with the Dataset Series level (though as it is possible that datasets and their series may have different frequencies both Dataset and Data Series have access to the Frequency class). Although more than one Frequency is possible, the Frequency required by Dissemination is the publication frequency. Dataset Series also contains a property called *Dataset Series Next Issued Date* which is the projected date of the next publication in a series, and *Dataset Series Next Release Status* which gives further details. These are both optional.
 
 ### Usage Notes and Version Notes
 
-In previous iterations of the model, Alerts and Usage Notes were types of Annotation which were used to display a message on a website. This was reviewed and it was decided to fold Alerts and Usage Notes into a *Usage Note* property which is available to Dataset and Dataset Series classes, and for the Annotation class to be removed. This will be reviewed in future.
+In previous iterations of the model, Alerts and Usage Notes were types of Annotation which were used to display a message on a website. This was reviewed and it was decided to fold Alerts and Usage Notes into a *Usage Note* property which is available to Dataset and Dataset Series classes, and for the Annotation class to be removed.
 
 Use cases for Alerts such as notifying that a data series has been discontinued would be better covered through the *Resource Status* property, which is intended to work as a flexible lifecycle indicator that should cover any stage a dataset is in.
 
@@ -127,7 +110,7 @@ Version Notes, which show changes between versions of a dataset or distribution,
 
 ### Quality Designation
 
-The ONS Metadata Model currently has no mechanism for managing quality, so as a stopgap measure this is an enumerated list which should allow a choice of accredited official, official or official-in-development. This is likely to change in future.
+The ONS Metadata Model currently has no mechanism for managing quality, so as a stopgap measure this is an enumerated list which should allow a choice of accredited official, official or official-in-development. 
 
 ## Documentation
 
@@ -149,7 +132,7 @@ The other properties available to Resource Documentation shouldn’t be required
 
 ![Related Resources diagram](images/RELATED_RESOURCE.png)
 
-The Related Resource class is able to link resources to one another as shown above, linking two dataset series together based on their conceptual similarity. This could be used in future to show users other publications that could be of interest to them. The *Type* property describes how the resources are linked. While this has been flagged as of potential use in the future it is currently under review and is likely to be removed as the provenance layer of the model is added. As such it is not represented in the profile diagram and may be removed before release of the dissemination metadata profile if no immediate use is found for it.
+The Related Resource class is able to link resources to one another as shown above, linking two dataset series together based on their conceptual similarity. This could be used in future to show users other publications that could be of interest to them. 
 
 ## Data Service
 
@@ -158,6 +141,8 @@ A dataset should be served by one or more data services, and a distribution shou
 As a sub-type of Resource, Data Service may also be versioned in the same way as Datasets, with an abstract higher layer pointing to the current version and a version chain built using “Replaces” or "Previous Version" where both are active at the same time. This would allow the same Distribution to be accessed via multiple versions of an API without requiring a new Distribution to be created for each version.
 
 Validity of a data service can be detailed in the Data Service’s *Resource Description* property and using *Resource Status*.
+
+Data Services can be versioned in the same way as Datasets, and this has been made explicit in the main documentation. This may be useful if a dataset can be accessed by multiple versions of an API.
 
 ## Distribution
 
@@ -179,13 +164,11 @@ Conforms To refers to a standard rather than a schema. If Distribution Conforms 
 
 ## Agent, Role and Attribution
 
-For the dissemination metadata profile there are three major roles that should be present in a dataset - the contact, publisher and contributor(s). These are created using the Agent, Role and Attribution classes described in the Metadata Model Documentation. The minimum metadata for each in this profile is the *Role Name*, *Agent Name* and *Agent Email*. For the publisher and contributors a homepage URL is also required. Contacts may optionally also have a phone number.
+For the dissemination metadata profile there are two major roles that should be present in a dataset - the publisher and contributor(s). These are created using the Agent, Role and Attribution classes described in the Metadata Model Documentation. The publisher should belong to the Organisation subtype (defaulting to "Office for National Statistics" if no publisher is specified) and the contributor(s) should be the Person subtype which includes teams and individuals.
 
-The Agent can be a named individual, a team or an organisation. Organisations require a name and a HTTP address, and teams and individuals require an email address and optionally a phone number.
+Organisations require a name and a HTTP address, and teams and individuals require a name and email address, and optionally a phone number.
 
 ## Next steps
-
-- Understand the theme and topic taxonomies and establish how a central source of truth will be maintained/mirrored.
 
 - Produce a physical model and template schema.
 
@@ -197,10 +180,15 @@ The metadata model is based mostly on DCAT, preferring to take classes and resou
 
 [DCAT version 3 (Data Catalogue Vocabulary)](https://www.w3.org/TR/vocab-dcat-3/)
 
+[SKOS (Simple Knowledge Organisation System)](https://www.w3.org/TR/skos-reference/)
+
+[PROV-DM (Provenance Data Model)](https://www.w3.org/TR/2013/REC-prov-dm-20130430/)
+
+
 The model reports identify which vocabulary each class and property has been derived from.
 
 ### Contact Us
 
-If you have been forwarded this file or found it somewhere on your travels: the ONS Metadata Model and metadata profiles are hosted on a public [GitHub repository](https://github.com/ONSdigital/enterprise_metadata_model_updates). Of particular interest within the repository are [the entity definition and logical dictionary reports](https://github.com/ONSdigital/enterprise_metadata_model_updates/tree/main/documents/reports) and [the Architectural Decision Record](https://github.com/ONSdigital/enterprise_metadata_model_updates/tree/main/documents/decisions) which lists all decisions made about the model and who made those choices. 
+If you have been forwarded this file or found it somewhere: the ONS Metadata Model and metadata profiles are hosted on a public [GitHub repository](https://github.com/ONSdigital/enterprise_metadata_model_updates). Of particular interest within the repository are [the entity definition and logical dictionary reports](https://github.com/ONSdigital/enterprise_metadata_model_updates/tree/main/documents/reports) and [the Architectural Decision Record](https://github.com/ONSdigital/enterprise_metadata_model_updates/tree/main/documents/decisions) which lists all decisions made about the model and who made those choices. 
 
 Please reach out to one of the repository contributors in the first instance.
