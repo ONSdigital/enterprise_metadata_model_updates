@@ -131,13 +131,13 @@ Resources are related to one another as a *Related Resource*. This class links d
 
 A *Catalogue Record* provides information about the creation of resources in the catalogue rather than the resources themselves. For instance, it records when a dataset was added to the catalogue, but not when the actual dataset was published. 
 
-An *Agent* is a person or an organisation who carries out some *Role* , or function, in relation to a resource. The Population Statistics team may be the data steward of a dataset or dataset series. *Attribution* links a particular Agent carrying out a Role to a Resource.
+An *Agent* is a person or an organisation who carries out some *Role* , or function, in relation to a resource. The Population Statistics team may be the data steward of a dataset or dataset series. *Attribution* links a particular Agent carrying out a Role to a Resource or to a Category in the Governance layer.
 
 *Provenance* describes the Resource, Activities, and Agents involved in producing a Resource. It is designed to make it possible to trace the generation, usage and invalidation of datasets throughout their lifecycles.
 
 *Governance* contains the systems for assigning ownership to Resources by allowing them to be categorised into themes, topics and domains which have specific Roles and Agents assigned to them. It also provides a basic system for managing theme taxonomies.
 
-*Period of time* and *frequency* allow multiple durations and frequencies to be associated with datasets and data series.
+*Period of Time* and *Frequency* allow multiple durations and frequencies to be associated with datasets and data series.
 
 For more details about class and property definitions please see below and refer to the [Reports](https://github.com/ONSdigital/enterprise_metadata_model_updates/tree/main/reports) section of the model’s GitHub repository.
 
@@ -230,7 +230,7 @@ The governance layer also attaches to the Resource class, so is available to all
 Category is a generic name for domains, themes, subdomains, topics and so on. It’s based on SKOS:concept. A dataset or any other kind of resource can be assigned to multiple categories through the Resource-Category associative entity.
 
 ##### Resource-Category
-As associative class linking Resource to 
+As associative class linking Resource to a Category, allowing many categories to be associated with a resource. It has validity dates which allow a picture to be drawn of when these categories changed, which is particularly relevant to long-running data series.
 
 ##### Category Taxonomy 
 Allows hierarchies of categories to be built. Broader Category is the more general topic, Narrower Category is the more specific  (Cat could be the narrower category of the broader category Mammal). A narrower category may belong to more than one broader categories, for instance datasets having the theme of COVID might sit under health, economy and social themes.
@@ -239,6 +239,8 @@ Allows hierarchies of categories to be built. Broader Category is the more gener
 Allows identification of the specific taxonomy a theme or topic belongs to, preferably linking out to some documentation explaining it. Since different domain, theme and topic taxonomies might have categories of the same names in them it can help with disambiguation. Unlike a full SKOS system the model doesn't currently allow a category to belong to multiple taxonomies because the need for that hasn't yet been identified and in the interest of reducing complexity.
 
 ![Governance illustration](images/diagrams/instance_diagrams/GOVERNANCE_ILLUSTRATION.png)
+
+This illustration shows a worked example of domain ownership. In addition to these domains the model is flexible enough to allow the Demographic Index to be assigned to themes, topics or operational categories belonging to other taxonomies at the same time.
 
 ### Series
 
