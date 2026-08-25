@@ -46,11 +46,11 @@ This document and its illustrations are based on the ONS Metadata Model release 
 This document details a metadata profile, a subset of the overall metadata model tailored for a particular part of the statistical production process. As such it doesn’t discuss the model more generally or go into detail on areas which are common to all parts of the business (such as versioning using the model, how agents, roles and attributions work or what the major classes are). It also doesn’t have any detail on concepts such as modelling levels or what a metadata profile *is.* It’s recommended that you first read the *Metadata Model Documentation* which is available in the [GitHub repository](https://github.com/ONSdigital/enterprise_metadata_model_updates/blob/main/metadata_model/METADATA_MODEL_DOCUMENTATION.md).
 
 
-## Conceptual metadata model for Dissemination
+## Conceptual metadata diagram for Dissemination
 
 ![Conceptual metadata model for Dissemination](images/diagrams/DISSEMINATION_CONCEPTUAL.png)
 
-## Logical metadata model for Dissemination
+## Logical metadata diagram for Dissemination
 
 ![Logical metadata model for Dissemination](images/diagrams/DISSEMINATION_LOGICAL.png)
 
