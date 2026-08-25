@@ -6,8 +6,6 @@
 - [Purpose](#purpose)
 - [Conceptual metadata model for Dissemination](#conceptual-metadata-model-for-dissemination)
 - [Logical metadata model for Dissemination](#logical-metadata-model-for-dissemination)
-- [Metadata profile diagram for Dissemination](#metadata-profile-diagram-for-dissemination)
-  - [Metadata profile diagram notes](#metadata-profile-diagram-notes)
 - [Instance diagram for typical dataset series and its distributions](#instance-diagram-for-typical-dataset-series-and-its-distributions)
   - [Instance diagram notes](#instance-diagram-notes)
 - [Metadata fields and language](#metadata-fields-and-language)
@@ -45,7 +43,7 @@ This document and its illustrations are based on the ONS Metadata Model release 
 
 ## Purpose
 
-This document details a metadata profile, a subset of the overall metadata model tailored for a particular part of the statistical production process. As such it doesn’t discuss the model more generally or go into detail on areas which are common to all parts of the business (such as versioning using the model, how agents, roles and attributions work or what the major classes are). It also doesn’t have any detail on concepts such as modelling levels or what a metadata profile *is.* It’s recommended that you first read the *Metadata Model Documentation* which is available in the [GitHub repository](documents/METADATA_MODEL_DOCUMENTATION.md).
+This document details a metadata profile, a subset of the overall metadata model tailored for a particular part of the statistical production process. As such it doesn’t discuss the model more generally or go into detail on areas which are common to all parts of the business (such as versioning using the model, how agents, roles and attributions work or what the major classes are). It also doesn’t have any detail on concepts such as modelling levels or what a metadata profile *is.* It’s recommended that you first read the *Metadata Model Documentation* which is available in the [GitHub repository](https://github.com/ONSdigital/enterprise_metadata_model_updates/blob/main/metadata_model/METADATA_MODEL_DOCUMENTATION.md).
 
 
 ## Conceptual metadata model for Dissemination
@@ -57,16 +55,6 @@ This document details a metadata profile, a subset of the overall metadata model
 ![Logical metadata model for Dissemination](images/diagrams/DISSEMINATION_LOGICAL.png)
 
 Please note that these diagrams show all the classes and properties that are *available* to the dissemination profile from the metadata model - you may not need to use all the properties.
-
-## Metadata profile diagram for Dissemination
-
-![Metadata profile diagram for Dissemination](images/diagrams/DISSEMINATION_PROFILE.png)
-
-### Metadata profile diagram notes
-
-The diagram shows a entity-relationship diagram model which shows how the classes and properties introduced in the previous diagrams would be used in the dissemination context. A further step is required for implementation from here - a physical model and schema, which may entail changing the property names or where they appear in the model to meet the specific requirements of the system it is implemented in.
-
-The asterisk before the entity names in the diagram is due to a limitation in the data modelling software and can be ignored.
 
 ## Instance diagram for typical dataset series and its distributions
 
@@ -102,7 +90,7 @@ A possible exception may be for ad hoc datasets (including user-requested data).
 
 ### Themes
 
-Themes are managed by governance classes which describe categories, taxonomies and ownership. Please refer to the [Metadata Model Documentation](documents/METADATA_MODEL_DOCUMENTATION.md) for more detail about this. As Dissemination doesn't require roles or actors to be associated with themes it is not necessary to use all the classes available in the governance layer of the model so not all of them have been represented on the Dissemination logical diagram.
+Themes are managed by governance classes which describe categories, taxonomies and ownership. Please refer to the [Metadata Model Documentation](https://github.com/ONSdigital/enterprise_metadata_model_updates/blob/main/metadata_model/METADATA_MODEL_DOCUMENTATION.md) for more detail about this. As Dissemination doesn't require roles or actors to be associated with themes it is not necessary to use all the classes available in the governance layer of the model so not all of them have been represented on the Dissemination logical diagram.
 
 ### Dates
 
