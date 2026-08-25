@@ -4,7 +4,7 @@ Date: 04/08/2026 14:38
 
 ## Status
 
-FOR DISCUSSION
+ACCEPTED
 
 ## Context
 
@@ -24,6 +24,8 @@ In short Sam thinks it's easier to manage this system, it's less confusing for e
 
 ## Decision
 
-Leaving this for everyone to think about.
+This was accepted in late August and the version system simply reflects the date of the GitHub commit to main.
 
 ## Consequences
+
+This will cause some issues with existing strategic planning around version numbers but unlikely to cause much confusion in the long term.

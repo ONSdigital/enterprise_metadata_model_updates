@@ -4,7 +4,7 @@ Date: 11/08/2026 13:43
 
 ## Status
 
-AWAITING DECISION
+ACCEPTED
 
 ## Context
 
@@ -24,7 +24,7 @@ Strictly speaking Identifier Type could link to a Catalogue class now that we're
  
 ## Decision
 
-It's been added to the draft model.
+It's been added to the model.
 
 ## Consequences
-
+Allows us to take advantage of existing catalogues and other metadata systems while we wait for a catalogue (and buys us time to think about how to deal with requirements without simply adding attributes somewhere in the model)
