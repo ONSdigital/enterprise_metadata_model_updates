@@ -307,7 +307,9 @@ Welsh language metadata fields are important to meet our commitment to promote t
 The metadata model is based mostly on DCAT, preferring to take classes and resources from standard vocabularies and their approved extensions. More information can be found below:
 
 [DCAT version 3 (Data Catalogue Vocabulary)](https://www.w3.org/TR/vocab-dcat-3/)
+
 [SKOS (Simple Knowledge Organisation System)](https://www.w3.org/TR/skos-reference/)
+
 [PROV-DM (Provenance Data Model)](https://www.w3.org/TR/2013/REC-prov-dm-20130430/)
 
 The model reports identify which vocabulary each class and property has been derived from.
