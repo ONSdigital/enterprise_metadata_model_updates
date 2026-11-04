@@ -20,6 +20,8 @@ It consists of the following artifacts :
 
 ## News
 
+-- 04/11/2026 [Drafts directory](/drafts) added to capture proposed developments to the model between releases. If you want to discuss these drafts or the thinking around them, get in touch. --
+
 Provenance and governance functionality has been added to the model, allowing any system aligned with this design to describe how datasets are generated, transformed and used across the estate. It also allows flexible categorisation of resources (for instance into themes, topics and domains) with people and roles associated with them.
 
 Following discussions within the Data Architecture team we have moved from a semantic versioning system to a date-based one which is tied to main branch commits to this repository. As the model is in a stable state and we're satisfied about the basic functionality (and ability to link out to existing catalogues where that functionality is still missing) the update cycle is likely to slow down and updates to this repository will reflect major changes only.
