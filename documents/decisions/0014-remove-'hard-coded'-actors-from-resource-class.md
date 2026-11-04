@@ -4,7 +4,7 @@ Date: 19/06/2026 12:04
 
 ## Status
 
-ACCEPTED
+SUPERCEDED by 0030
 
 ## Context
 
