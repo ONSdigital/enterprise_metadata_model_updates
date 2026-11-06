@@ -2,9 +2,9 @@
 
 Please note that these diagrams are in draft form - they have not been agreed for release. They are provided so interested people can keep track of developments and input on any changes that might be coming up.
 
-These will be updated from time to time between formal releases but probably at least fortnightly.
+These will be updated from time to time between formal releases but probably at least fortnightly or when interesting bits get added.
 
-Latest draft is 4/11/2026
+Latest draft is 6/11/2026
 
 ![Notes](01_notes.png)
 
@@ -15,5 +15,3 @@ Latest draft is 4/11/2026
 ![Codelist layer logical model](04_codelists.png)
 
 ![Provenance layer logical model](05_provenance.png)
-
-
